@@ -20,10 +20,10 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
 }
 date_default_timezone_set('Asia/Kolkata');
 
-define('DB_HOST', getenv('EDITORIAL_DB_HOST') ?: '127.0.0.1');
-define('DB_NAME', getenv('EDITORIAL_DB_NAME') ?: 'ajsmr_editorial');
-define('DB_USER', getenv('EDITORIAL_DB_USER') ?: 'root');
-define('DB_PASS', getenv('EDITORIAL_DB_PASS') ?: '');
+const DB_HOST = 'sdb-63.hosting.stackcp.net';
+const DB_NAME = 'ajsmr_editorial-353033357d46';
+const DB_USER = 'ajsmr_editorial-353033357d46';
+const DB_PASS = 'ulUeW5%sGy7v';
 
 $basePath = (isset($_SERVER['REQUEST_URI']) && str_starts_with($_SERVER['REQUEST_URI'], '/ajsmr_testing'))
     ? '/ajsmr_testing/editorial/'
@@ -54,12 +54,11 @@ function db(): PDO {
         );
         return $p;
     } catch (PDOException $e) {
-        // Fallback for local development environment
         try {
             $p = new PDO(
-                "mysql:host=127.0.0.1;port=3306;dbname=ajsmr_editorial;charset=utf8mb4",
-                "root",
-                getenv('EDITORIAL_DB_PASS') ?: "",
+                "mysql:host=sdb-63.hosting.stackcp.net;dbname=ajsmr_editorial-353033357d46;charset=utf8mb4",
+                "ajsmr_editorial-353033357d46",
+                "Qi\$KwgV=>hc~",
                 [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -67,18 +66,32 @@ function db(): PDO {
                 ]
             );
             return $p;
-        } catch (PDOException $ex) {
-            $p = new PDO(
-                "mysql:host=localhost;dbname=ajsmr_editorial;charset=utf8mb4",
-                "root",
-                getenv('EDITORIAL_DB_PASS') ?: "",
-                [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES => false
-                ]
-            );
-            return $p;
+        } catch (PDOException $ex1) {
+            try {
+                $p = new PDO(
+                    "mysql:host=127.0.0.1;port=3306;dbname=ajsmr_editorial;charset=utf8mb4",
+                    "root",
+                    "Srija@2005",
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::ATTR_EMULATE_PREPARES => false
+                    ]
+                );
+                return $p;
+            } catch (PDOException $ex2) {
+                $p = new PDO(
+                    "mysql:host=localhost;dbname=ajsmr_editorial;charset=utf8mb4",
+                    "root",
+                    "Srija@2005",
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::ATTR_EMULATE_PREPARES => false
+                    ]
+                );
+                return $p;
+            }
         }
     }
 }

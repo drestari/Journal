@@ -7,10 +7,10 @@
 if (session_status() === PHP_SESSION_NONE) { @session_start(); }
 
 $Config = array();
-$Config['dbServer']   = getenv('MAIN_DB_HOST') ?: '127.0.0.1';
-$Config['dbUser']     = getenv('MAIN_DB_USER') ?: 'root';
-$Config['dbPassword'] = getenv('MAIN_DB_PASS') ?: '';
-$Config['dbName']     = getenv('MAIN_DB_NAME') ?: 'ajsmrjournal';
+$Config['dbServer']   = 'shareddb-g.hosting.stackcp.net';
+$Config['dbUser']     = 'ajsmrjournal-3731a6db';
+$Config['dbPassword'] = 'DV4z3wDax|=Q';
+$Config['dbName']     = 'ajsmrjournal-3731a6db';
 $Config['siteName']   = 'Ajsmrjournal';
 $Config['httppath']   = 'https://' . ($_SERVER['HTTP_HOST'] ?? 'ajsmrjournal.com') . '/';
 $Config['imagespath'] = '../images/';
@@ -21,10 +21,13 @@ $Config['link'] = @mysqli_connect(
     $Config['dbPassword'], $Config['dbName']
 );
 if (!$Config['link']) {
-    $Config['link'] = @mysqli_connect('127.0.0.1', 'root', getenv('MAIN_DB_PASS') ?: '', 'ajsmrjournal', 3306);
+    $Config['link'] = @mysqli_connect('shareddb-g.hosting.stackcp.net', 'ajsmrjournal-3731a6db', '{7QSSrLm5_Fm', 'ajsmrjournal-3731a6db');
 }
 if (!$Config['link']) {
-    $Config['link'] = @mysqli_connect('localhost', 'root', getenv('MAIN_DB_PASS') ?: '', 'ajsmrjournal');
+    $Config['link'] = @mysqli_connect('127.0.0.1', 'root', 'Srija@2005', 'ajsmrjournal', 3306);
+}
+if (!$Config['link']) {
+    $Config['link'] = @mysqli_connect('localhost', 'root', 'Srija@2005', 'ajsmrjournal');
 }
 $Config['db'] = (bool)$Config['link'];
 if ($Config['link']) { mysqli_set_charset($Config['link'], 'utf8mb4'); }

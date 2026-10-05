@@ -16,10 +16,10 @@ function journal_db(): PDO {
     static $jdb = null;
     if ($jdb instanceof PDO) return $jdb;
 
-    $host = getenv('MAIN_DB_HOST') ?: '127.0.0.1';
-    $name = getenv('MAIN_DB_NAME') ?: 'ajsmrjournal';
-    $user = getenv('MAIN_DB_USER') ?: 'root';
-    $pass = getenv('MAIN_DB_PASS') ?: '';
+    $host = 'shareddb-g.hosting.stackcp.net';
+    $name = 'ajsmrjournal-3731a6db';
+    $user = 'ajsmrjournal-3731a6db';
+    $pass = 'DV4z3wDax|=Q';
 
     try {
         $jdb = new PDO(
@@ -36,9 +36,9 @@ function journal_db(): PDO {
     } catch (PDOException $e) {
         try {
             $jdb = new PDO(
-                "mysql:host=127.0.0.1;port=3306;dbname=ajsmrjournal;charset=utf8mb4",
-                "root",
-                getenv('MAIN_DB_PASS') ?: "",
+                "mysql:host=shareddb-g.hosting.stackcp.net;dbname=ajsmrjournal-3731a6db;charset=utf8mb4",
+                "ajsmrjournal-3731a6db",
+                "{7QSSrLm5_Fm",
                 [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -46,18 +46,32 @@ function journal_db(): PDO {
                 ]
             );
             return $jdb;
-        } catch (PDOException $ex) {
-            $jdb = new PDO(
-                "mysql:host=localhost;dbname=ajsmrjournal;charset=utf8mb4",
-                "root",
-                getenv('MAIN_DB_PASS') ?: "",
-                [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES => false
-                ]
-            );
-            return $jdb;
+        } catch (PDOException $ex1) {
+            try {
+                $jdb = new PDO(
+                    "mysql:host=127.0.0.1;port=3306;dbname=ajsmrjournal;charset=utf8mb4",
+                    "root",
+                    "Srija@2005",
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::ATTR_EMULATE_PREPARES => false
+                    ]
+                );
+                return $jdb;
+            } catch (PDOException $ex2) {
+                $jdb = new PDO(
+                    "mysql:host=localhost;dbname=ajsmrjournal;charset=utf8mb4",
+                    "root",
+                    "Srija@2005",
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::ATTR_EMULATE_PREPARES => false
+                    ]
+                );
+                return $jdb;
+            }
         }
     }
 }
