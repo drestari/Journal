@@ -254,7 +254,7 @@ if ($db) {
       <i></i><span>▣ &nbsp;Quarterly</span>
     </div>
     <div class="utility-right">
-      <a href="mailto:editorajsmr@gmail.com">✉ &nbsp;editorajsmr@gmail.com</a>
+      <a href="mailto:editor@ajsmrjournal.com">✉ &nbsp;editor@ajsmrjournal.com</a>
       <i></i>
       <a href="editorial/eic-login.php">↪ &nbsp;Editorial Login</a>
       <i></i>
