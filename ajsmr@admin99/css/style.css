@@ -1,0 +1,167 @@
+/* CSS Document */
+
+body{
+	background:url(../images/body-top-bg.jpg) repeat-x top;
+	margin:0px;
+	font:normal 12px Arial, Helvetica, sans-serif;
+}
+
+
+
+/* --------------  links Style  -------------- */
+
+a.forgotlink       { font:normal 12px Arial; color:#0067c6; text-decoration:none;}
+a.forgotlink:hover { font:normal 12px Arial; color:#333333; text-decoration:underline; }
+
+
+a.edit_link        { font:bold 12px Arial; color:#79ae00; text-decoration:none;}
+a.edit_link:hover  { font:bold 12px Arial; color:#ff7108; text-decoration:underline;}
+
+a.red_link        { font:bold 12px Arial; color:#ff0000; text-decoration:underline;}
+a.red_link:hover  { font:bold 12px Arial; color:#000; text-decoration:none;}
+
+
+a.add_link         { font:bold 12px Arial; color:#fff; text-decoration:none;}
+a.add_link:hover   { font:bold 12px Arial; color:#fff; text-decoration:underline;}
+
+
+.leftnavlinks        {font:bold 11px Georgia; color:#FF0000; text-decoration:none; text-transform:uppercase; }
+.leftnavlinks a      { font:normal 11px Georgia; color:#4c4c4c; text-decoration:none; text-transform:uppercase;}
+.leftnavlinks a:hover{ font:normal 11px Georgia; color:#ff7108; text-decoration:none; text-transform:uppercase;}
+
+
+.body_txt_bold12px a       { font:bold 12px arial; color:#0067c6; line-height:18px; text-decoration:none;}
+.body_txt_bold12px a:hover { font:bold 12px arial; color: #000; line-height:18px; text-decoration:underline;}
+
+
+a.news_link      {font:normal 12px Arial; color:#414141; text-decoration:none; border:0; line-height:16px;}
+a.news_link:hover{ font:normal 12px Arial; color:#669200; text-decoration:none;	border-bottom:1px dashed #000;line-height:16px;}
+
+.innerlinks{ font:bold 12px Georgia; color:#333333; line-height:18px;  border:0px;}
+.innerlinks a{ font:bold 12px Georgia; color:#333333; line-height:18px; text-decoration:none;}
+.innerlinks a:hover{ font:bold 12px Georgia; color:#6e9e00; line-height:18px; text-decoration:underline}
+
+
+
+/* -------------- Bg's Style --------------  */
+.footer_bg{ background:url(../images/footer-bg.jpg) repeat-x;}
+.login_box_bg{ background:url(../images/login-box-bg.jpg) repeat-x top;}
+.devider_bg{ background:url(../images/devider.jpg) repeat-y top;}
+.leftnav_devider_bg{ background:url(../images/devider_2.jpg) repeat-x top;}
+
+
+
+/* --------------  Tables Style  -------------- */
+.border1px{ border:1px solid #e0e0e0;}
+.pannel_border{border-left:1px solid #e0e0e0; border-right:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; border-top:none;}
+.inner_table_border{ border:1px solid #e0e0e0; background:#f7f7f7;}
+
+
+
+/* --------------  text Style  -------------- */
+
+.red_heading_txt_16px{
+	font:bold 16px Georgia, "Times New Roman", Times, serif;
+	color:#0067c6;
+}
+.red_heading_txt_12px{
+	font:bold 12px Georgia;
+	color:#0067c6;
+}
+.green_heading_txt_16px{
+	font:bold 16px Georgia, "Times New Roman", Times, serif;
+	color:#444444;
+}
+.black_heading_txt_12px{
+	font:bold 12px Georgia;
+	color:#606060;
+}
+.black_heading_txt_12px{
+	font:bold 12px Georgia;
+	color:#606060;
+}
+.white_bold_txt_12px{
+	font:bold 12px Georgia;
+	color:#fff;
+}
+.white_bold_txt_11px{
+	font:bold 11px Georgia;
+	color:#fff;
+}
+.footer_text{
+	font:normal 11px Arial, Helvetica, sans-serif;
+	color:#5f5f5f;
+}
+.uppercase_txt{ text-transform:uppercase;}
+
+.body_txt12px{
+	font:normal 12px arial;
+	color:#333333;
+	line-height:18px;
+}
+.home_body_txt12px{
+	font:normal 12px arial;
+	color:#333333;
+	line-height:21px;
+}
+.block_txt12px{
+	font:normal 12px arial;
+	color:#333333;
+	line-height:16px;
+}
+.body_txt_bold12px{
+	font:bold 12px arial;
+	color:#333333;
+	line-height:18px;
+}
+
+
+/* --------------  Input Style  -------------- */
+
+.textbox{
+	width:240px;
+	height:17px;
+	background:#fff;
+	border:1px solid #dbdbdb;
+	padding:2px;
+	font:normal 12px Arial, Helvetica, sans-serif;
+	color:#666666;
+}
+.admin_textbox{
+	width:300px;
+	height:17px;
+	background:#f7f7f7;
+	border:1px solid #dbdbdb;
+	padding:2px;
+	font:normal 12px Arial, Helvetica, sans-serif;
+	color:#333333;
+}
+.admin_selectbox{
+	width:306px;
+	background:#f7f7f7;
+	border:1px solid #dbdbdb;
+	padding:2px;
+	font:normal 12px Arial, Helvetica, sans-serif;
+	color:#666666;
+}
+
+.button_bg{
+	background:url(../images/button_bg.jpg) repeat-x;
+	font:bold 11px Arial;
+	color:#fff;
+	border:0px;
+	padding:4px 15px;
+	text-transform:uppercase;
+}
+
+#txtavail{ font:normal 11px Georgia; color:#FF0000; text-transform:capitalize}
+
+.padding_left5px{ padding-left:5px;}
+
+.selectbox{
+	background:#fff;
+	border:1px solid #B1B1B1;
+	padding:2px;
+	font:normal 12px Arial, Helvetica, sans-serif;
+	color:#000;
+}

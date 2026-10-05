@@ -1,0 +1,239 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 20/02/2018 19:45
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/Flaticon.eot");
+  src: url("../fonts/Flaticond41d.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.flaticon-server-from-client:before { content: "\f100"; }
+.flaticon-shield-variant-with-white-and-black-borders:before { content: "\f101"; }
+.flaticon-earth:before { content: "\f102"; }
+.flaticon-stats:before { content: "\f103"; }
+.flaticon-report-1:before { content: "\f104"; }
+.flaticon-handshake:before { content: "\f105"; }
+.flaticon-presentation-2:before { content: "\f106"; }
+.flaticon-briefcase:before { content: "\f107"; }
+.flaticon-design-tool:before { content: "\f108"; }
+.flaticon-presentation-1:before { content: "\f109"; }
+.flaticon-notebook:before { content: "\f10a"; }
+.flaticon-network-1:before { content: "\f10b"; }
+.flaticon-placeholder-1:before { content: "\f10c"; }
+.flaticon-file-1:before { content: "\f10d"; }
+.flaticon-search:before { content: "\f10e"; }
+.flaticon-user:before { content: "\f10f"; }
+.flaticon-stopwatch:before { content: "\f110"; }
+.flaticon-edit-1:before { content: "\f111"; }
+.flaticon-like:before { content: "\f112"; }
+.flaticon-coin:before { content: "\f113"; }
+.flaticon-headphones:before { content: "\f114"; }
+.flaticon-right-arrow:before { content: "\f115"; }
+.flaticon-left-arrow:before { content: "\f116"; }
+.flaticon-profile:before { content: "\f117"; }
+.flaticon-sun:before { content: "\f118"; }
+.flaticon-data-search-interface-symbol-of-a-bars-graphic-with-a-magnifier-tool:before { content: "\f119"; }
+.flaticon-home:before { content: "\f11a"; }
+.flaticon-envelope:before { content: "\f11b"; }
+.flaticon-favorites:before { content: "\f11c"; }
+.flaticon-message:before { content: "\f11d"; }
+.flaticon-file:before { content: "\f11e"; }
+.flaticon-edit:before { content: "\f11f"; }
+.flaticon-placeholder:before { content: "\f120"; }
+.flaticon-monitor-1:before { content: "\f121"; }
+.flaticon-idea:before { content: "\f122"; }
+.flaticon-line-chart-3:before { content: "\f123"; }
+.flaticon-speedometer:before { content: "\f124"; }
+.flaticon-quality-2:before { content: "\f125"; }
+.flaticon-headset-1:before { content: "\f126"; }
+.flaticon-target-7:before { content: "\f127"; }
+.flaticon-payment:before { content: "\f128"; }
+.flaticon-headset:before { content: "\f129"; }
+.flaticon-quality-1:before { content: "\f12a"; }
+.flaticon-email:before { content: "\f12b"; }
+.flaticon-price-tag:before { content: "\f12c"; }
+.flaticon-money-11:before { content: "\f12d"; }
+.flaticon-people-9:before { content: "\f12e"; }
+.flaticon-connection-2:before { content: "\f12f"; }
+.flaticon-technology-2:before { content: "\f130"; }
+.flaticon-man-1:before { content: "\f131"; }
+.flaticon-businessman-in-apresentation-with-a-graphic-on-a-board:before { content: "\f132"; }
+.flaticon-people-8:before { content: "\f133"; }
+.flaticon-target-6:before { content: "\f134"; }
+.flaticon-target-5:before { content: "\f135"; }
+.flaticon-target-4:before { content: "\f136"; }
+.flaticon-target-3:before { content: "\f137"; }
+.flaticon-luxury-2:before { content: "\f138"; }
+.flaticon-travel-2:before { content: "\f139"; }
+.flaticon-line:before { content: "\f13a"; }
+.flaticon-coins-2:before { content: "\f13b"; }
+.flaticon-money-10:before { content: "\f13c"; }
+.flaticon-business-22:before { content: "\f13d"; }
+.flaticon-consulting:before { content: "\f13e"; }
+.flaticon-consultation-1:before { content: "\f13f"; }
+.flaticon-consulting-message:before { content: "\f140"; }
+.flaticon-consultation:before { content: "\f141"; }
+.flaticon-layers:before { content: "\f142"; }
+.flaticon-rocket:before { content: "\f143"; }
+.flaticon-medal-2:before { content: "\f144"; }
+.flaticon-medal-1:before { content: "\f145"; }
+.flaticon-users:before { content: "\f146"; }
+.flaticon-people-7:before { content: "\f147"; }
+.flaticon-customer:before { content: "\f148"; }
+.flaticon-magnifier:before { content: "\f149"; }
+.flaticon-market:before { content: "\f14a"; }
+.flaticon-medal:before { content: "\f14b"; }
+.flaticon-olive-branches-award-symbol:before { content: "\f14c"; }
+.flaticon-competition:before { content: "\f14d"; }
+.flaticon-quality:before { content: "\f14e"; }
+.flaticon-time:before { content: "\f14f"; }
+.flaticon-clock-2:before { content: "\f150"; }
+.flaticon-chart-1:before { content: "\f151"; }
+.flaticon-people-6:before { content: "\f152"; }
+.flaticon-globe:before { content: "\f153"; }
+.flaticon-graphic-19:before { content: "\f154"; }
+.flaticon-graphic-18:before { content: "\f155"; }
+.flaticon-business-21:before { content: "\f156"; }
+.flaticon-people-5:before { content: "\f157"; }
+.flaticon-graphic-17:before { content: "\f158"; }
+.flaticon-business-20:before { content: "\f159"; }
+.flaticon-money-9:before { content: "\f15a"; }
+.flaticon-business-19:before { content: "\f15b"; }
+.flaticon-graphic-16:before { content: "\f15c"; }
+.flaticon-business-18:before { content: "\f15d"; }
+.flaticon-graphic-15:before { content: "\f15e"; }
+.flaticon-coins-1:before { content: "\f15f"; }
+.flaticon-business-17:before { content: "\f160"; }
+.flaticon-money-8:before { content: "\f161"; }
+.flaticon-graphic-14:before { content: "\f162"; }
+.flaticon-gestures:before { content: "\f163"; }
+.flaticon-target-2:before { content: "\f164"; }
+.flaticon-people-4:before { content: "\f165"; }
+.flaticon-graphic-13:before { content: "\f166"; }
+.flaticon-business-16:before { content: "\f167"; }
+.flaticon-travel-1:before { content: "\f168"; }
+.flaticon-graphic-12:before { content: "\f169"; }
+.flaticon-people-3:before { content: "\f16a"; }
+.flaticon-money-7:before { content: "\f16b"; }
+.flaticon-graphic-11:before { content: "\f16c"; }
+.flaticon-business-15:before { content: "\f16d"; }
+.flaticon-folder:before { content: "\f16e"; }
+.flaticon-people-2:before { content: "\f16f"; }
+.flaticon-money-6:before { content: "\f170"; }
+.flaticon-agenda:before { content: "\f171"; }
+.flaticon-suitcase-1:before { content: "\f172"; }
+.flaticon-signs:before { content: "\f173"; }
+.flaticon-technology-1:before { content: "\f174"; }
+.flaticon-note:before { content: "\f175"; }
+.flaticon-social:before { content: "\f176"; }
+.flaticon-cogwheel:before { content: "\f177"; }
+.flaticon-graphic-10:before { content: "\f178"; }
+.flaticon-connection-1:before { content: "\f179"; }
+.flaticon-people-1:before { content: "\f17a"; }
+.flaticon-can:before { content: "\f17b"; }
+.flaticon-left:before { content: "\f17c"; }
+.flaticon-favorite:before { content: "\f17d"; }
+.flaticon-arrows:before { content: "\f17e"; }
+.flaticon-draw:before { content: "\f17f"; }
+.flaticon-checked:before { content: "\f180"; }
+.flaticon-plus-1:before { content: "\f181"; }
+.flaticon-minus-1:before { content: "\f182"; }
+.flaticon-unchecked:before { content: "\f183"; }
+.flaticon-plus:before { content: "\f184"; }
+.flaticon-plus-symbol:before { content: "\f185"; }
+.flaticon-minus:before { content: "\f186"; }
+.flaticon-dustbin:before { content: "\f187"; }
+.flaticon-link:before { content: "\f188"; }
+.flaticon-report:before { content: "\f189"; }
+.flaticon-presentation:before { content: "\f18a"; }
+.flaticon-pie-chart-2:before { content: "\f18b"; }
+.flaticon-box-plot:before { content: "\f18c"; }
+.flaticon-line-chart-2:before { content: "\f18d"; }
+.flaticon-growth:before { content: "\f18e"; }
+.flaticon-pie-chart-1:before { content: "\f18f"; }
+.flaticon-pyramid:before { content: "\f190"; }
+.flaticon-vector:before { content: "\f191"; }
+.flaticon-chart:before { content: "\f192"; }
+.flaticon-line-chart-1:before { content: "\f193"; }
+.flaticon-diagram-1:before { content: "\f194"; }
+.flaticon-line-chart:before { content: "\f195"; }
+.flaticon-target-1:before { content: "\f196"; }
+.flaticon-pen:before { content: "\f197"; }
+.flaticon-invest:before { content: "\f198"; }
+.flaticon-man:before { content: "\f199"; }
+.flaticon-travel:before { content: "\f19a"; }
+.flaticon-monitor:before { content: "\f19b"; }
+.flaticon-business-14:before { content: "\f19c"; }
+.flaticon-business-13:before { content: "\f19d"; }
+.flaticon-business-12:before { content: "\f19e"; }
+.flaticon-diagram:before { content: "\f19f"; }
+.flaticon-connection:before { content: "\f1a0"; }
+.flaticon-graphic-9:before { content: "\f1a1"; }
+.flaticon-education:before { content: "\f1a2"; }
+.flaticon-transport:before { content: "\f1a3"; }
+.flaticon-business-11:before { content: "\f1a4"; }
+.flaticon-graphic-8:before { content: "\f1a5"; }
+.flaticon-people:before { content: "\f1a6"; }
+.flaticon-shield-1:before { content: "\f1a7"; }
+.flaticon-business-10:before { content: "\f1a8"; }
+.flaticon-shapes:before { content: "\f1a9"; }
+.flaticon-shield:before { content: "\f1aa"; }
+.flaticon-business-9:before { content: "\f1ab"; }
+.flaticon-graphic-7:before { content: "\f1ac"; }
+.flaticon-luxury-1:before { content: "\f1ad"; }
+.flaticon-money-5:before { content: "\f1ae"; }
+.flaticon-graphic-6:before { content: "\f1af"; }
+.flaticon-pie-chart:before { content: "\f1b0"; }
+.flaticon-network:before { content: "\f1b1"; }
+.flaticon-graphic-5:before { content: "\f1b2"; }
+.flaticon-graphic-4:before { content: "\f1b3"; }
+.flaticon-suitcase:before { content: "\f1b4"; }
+.flaticon-business-8:before { content: "\f1b5"; }
+.flaticon-business-7:before { content: "\f1b6"; }
+.flaticon-graphic-3:before { content: "\f1b7"; }
+.flaticon-business-6:before { content: "\f1b8"; }
+.flaticon-money-4:before { content: "\f1b9"; }
+.flaticon-business-5:before { content: "\f1ba"; }
+.flaticon-business-4:before { content: "\f1bb"; }
+.flaticon-luxury:before { content: "\f1bc"; }
+.flaticon-business-3:before { content: "\f1bd"; }
+.flaticon-business-2:before { content: "\f1be"; }
+.flaticon-technology:before { content: "\f1bf"; }
+.flaticon-crystal:before { content: "\f1c0"; }
+.flaticon-shape:before { content: "\f1c1"; }
+.flaticon-clock-1:before { content: "\f1c2"; }
+.flaticon-paper:before { content: "\f1c3"; }
+.flaticon-graphic-2:before { content: "\f1c4"; }
+.flaticon-money-3:before { content: "\f1c5"; }
+.flaticon-clock:before { content: "\f1c6"; }
+.flaticon-money-2:before { content: "\f1c7"; }
+.flaticon-bars:before { content: "\f1c8"; }
+.flaticon-money-1:before { content: "\f1c9"; }
+.flaticon-money:before { content: "\f1ca"; }
+.flaticon-target:before { content: "\f1cb"; }
+.flaticon-coins:before { content: "\f1cc"; }
+.flaticon-commerce:before { content: "\f1cd"; }
+.flaticon-business-1:before { content: "\f1ce"; }
+.flaticon-graphic-1:before { content: "\f1cf"; }
+.flaticon-graphic:before { content: "\f1d0"; }
+.flaticon-business:before { content: "\f1d1"; }

@@ -1,0 +1,6 @@
+[17-Sep-2026 02:04:02 UTC] PHP Warning:  Undefined array key "full_name" in /home/nezv6rpm4gqg/public_html/ajsmrjournal.com/editorial/author/submit.php on line 1
+[17-Sep-2026 02:04:02 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'author_name' cannot be null in /home/nezv6rpm4gqg/public_html/ajsmrjournal.com/editorial/author/submit.php:1
+Stack trace:
+#0 /home/nezv6rpm4gqg/public_html/ajsmrjournal.com/editorial/author/submit.php(1): PDOStatement->execute()
+#1 {main}
+  thrown in /home/nezv6rpm4gqg/public_html/ajsmrjournal.com/editorial/author/submit.php on line 1

@@ -1,0 +1,13 @@
+# Environment & Secret Files
+.env
+.env.*
+!.env.example
+
+# Scratch test scripts and local scratch directory
+scratch/
+
+# Operating System & Editor Files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp

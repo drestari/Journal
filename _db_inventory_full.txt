@@ -1,0 +1,596 @@
+﻿
+=== DATABASE: ajsmr_editorial ===
+
+TABLE: ajsmr_submission_affiliations
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  submission_id | bigint(20) unsigned | Null:NO | Key:MUL | Default:
+  affiliation_no | int(10) unsigned | Null:NO | Key: | Default:
+  department | varchar(500) | Null:YES | Key: | Default:
+  institution | varchar(500) | Null:NO | Key: | Default:
+  city | varchar(150) | Null:YES | Key: | Default:
+  state | varchar(150) | Null:YES | Key: | Default:
+  country | varchar(150) | Null:NO | Key: | Default:
+
+TABLE: ajsmr_submission_authors
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  submission_id | bigint(20) unsigned | Null:NO | Key:MUL | Default:
+  author_order | int(10) unsigned | Null:NO | Key: | Default:
+  given_name | varchar(150) | Null:NO | Key: | Default:
+  middle_name | varchar(150) | Null:YES | Key: | Default:
+  family_name | varchar(150) | Null:NO | Key: | Default:
+  email | varchar(255) | Null:YES | Key: | Default:
+  orcid | varchar(50) | Null:YES | Key: | Default:
+  department | varchar(255) | Null:YES | Key: | Default:
+  institution | varchar(500) | Null:NO | Key: | Default:
+  city | varchar(150) | Null:YES | Key: | Default:
+  state | varchar(150) | Null:YES | Key: | Default:
+  country | varchar(150) | Null:NO | Key: | Default:
+  contribution | text | Null:YES | Key: | Default:
+  is_corresponding | tinyint(1) | Null:NO | Key: | Default:0
+
+TABLE: ajsmr_submission_files
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  submission_id | bigint(20) unsigned | Null:NO | Key:MUL | Default:
+  file_type | varchar(60) | Null:NO | Key: | Default:
+  original_name | varchar(255) | Null:NO | Key: | Default:
+  stored_name | varchar(255) | Null:NO | Key: | Default:
+  relative_path | varchar(500) | Null:NO | Key: | Default:
+  mime_type | varchar(150) | Null:NO | Key: | Default:
+  file_size | bigint(20) unsigned | Null:NO | Key: | Default:
+  sha256 | char(64) | Null:NO | Key: | Default:
+  uploaded_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: ajsmr_submission_reviewers
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  submission_id | bigint(20) unsigned | Null:NO | Key:MUL | Default:
+  reviewer_type | varchar(20) | Null:NO | Key: | Default:
+  full_name | varchar(255) | Null:NO | Key: | Default:
+  institution | varchar(500) | Null:YES | Key: | Default:
+  country | varchar(150) | Null:YES | Key: | Default:
+  email | varchar(255) | Null:YES | Key: | Default:
+  orcid | varchar(50) | Null:YES | Key: | Default:
+  expertise | varchar(1000) | Null:YES | Key: | Default:
+  exclusion_reason | varchar(1000) | Null:YES | Key: | Default:
+
+TABLE: ajsmr_submissions
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_no | varchar(32) | Null:NO | Key:UNI | Default:
+  article_type | varchar(100) | Null:NO | Key: | Default:
+  title | text | Null:NO | Key: | Default:
+  running_title | varchar(500) | Null:YES | Key: | Default:
+  abstract_text | longtext | Null:NO | Key: | Default:
+  keywords | text | Null:YES | Key: | Default:
+  word_count | int(10) unsigned | Null:YES | Key: | Default:
+  figure_count | int(10) unsigned | Null:YES | Key: | Default:
+  table_count | int(10) unsigned | Null:YES | Key: | Default:
+  corresponding_name | varchar(255) | Null:NO | Key: | Default:
+  corresponding_email | varchar(255) | Null:NO | Key:MUL | Default:
+  corresponding_orcid | varchar(50) | Null:YES | Key: | Default:
+  corresponding_institution | varchar(500) | Null:NO | Key: | Default:
+  corresponding_department | varchar(255) | Null:YES | Key: | Default:
+  corresponding_city | varchar(150) | Null:YES | Key: | Default:
+  corresponding_state | varchar(150) | Null:YES | Key: | Default:
+  corresponding_country | varchar(150) | Null:NO | Key: | Default:
+  corresponding_postal_code | varchar(30) | Null:YES | Key: | Default:
+  corresponding_phone | varchar(50) | Null:YES | Key: | Default:
+  funding_status | varchar(20) | Null:NO | Key: | Default:none
+  funding_statement | text | Null:YES | Key: | Default:
+  conflict_status | varchar(20) | Null:NO | Key: | Default:none
+  conflict_statement | text | Null:YES | Key: | Default:
+  ethics_status | varchar(30) | Null:NO | Key: | Default:not_applicable
+  ethics_statement | text | Null:YES | Key: | Default:
+  ethics_committee | varchar(500) | Null:YES | Key: | Default:
+  ethics_approval_no | varchar(255) | Null:YES | Key: | Default:
+  ethics_approval_date | varchar(50) | Null:YES | Key: | Default:
+  consent_status | varchar(30) | Null:NO | Key: | Default:not_applicable
+  trial_registry | varchar(255) | Null:YES | Key: | Default:
+  trial_number | varchar(255) | Null:YES | Key: | Default:
+  trial_date | varchar(50) | Null:YES | Key: | Default:
+  data_status | varchar(30) | Null:NO | Key: | Default:not_applicable
+  data_repository | varchar(500) | Null:YES | Key: | Default:
+  data_identifier | varchar(500) | Null:YES | Key: | Default:
+  ai_status | varchar(10) | Null:NO | Key: | Default:no
+  ai_statement | text | Null:YES | Key: | Default:
+  originality_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  authors_approved | tinyint(1) | Null:NO | Key: | Default:0
+  exclusive_submission_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  accuracy_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  permissions_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  privacy_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  status | varchar(40) | Null:NO | Key:MUL | Default:submitted
+  submitted_at | datetime | Null:NO | Key:MUL | Default:current_timestamp()
+  ip_hash | char(64) | Null:YES | Key: | Default:
+  user_agent_hash | char(64) | Null:YES | Key: | Default:
+
+TABLE: article_authors
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  article_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  author_name | varchar(255) | Null:NO | Key: | Default:
+  affiliation | text | Null:YES | Key: | Default:
+  email | varchar(255) | Null:YES | Key: | Default:
+  orcid | varchar(100) | Null:YES | Key: | Default:
+  author_order | int(10) unsigned | Null:NO | Key: | Default:1
+  is_corresponding | tinyint(1) | Null:NO | Key: | Default:0
+
+TABLE: article_files
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  article_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  file_type | varchar(50) | Null:NO | Key: | Default:
+  original_name | varchar(255) | Null:NO | Key: | Default:
+  stored_path | varchar(500) | Null:NO | Key: | Default:
+  mime_type | varchar(150) | Null:YES | Key: | Default:
+  file_size | bigint(20) unsigned | Null:YES | Key: | Default:
+  created_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: article_references
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  article_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  reference_text | text | Null:NO | Key: | Default:
+  reference_order | int(10) unsigned | Null:NO | Key: | Default:1
+
+TABLE: articles
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  article_id | varchar(80) | Null:NO | Key:UNI | Default:
+  article_type | varchar(80) | Null:NO | Key: | Default:Research Article
+  title | text | Null:NO | Key: | Default:
+  running_title | varchar(500) | Null:YES | Key: | Default:
+  abstract | mediumtext | Null:YES | Key: | Default:
+  keywords | text | Null:YES | Key: | Default:
+  volume | varchar(30) | Null:YES | Key: | Default:
+  issue | varchar(30) | Null:YES | Key: | Default:
+  year | smallint(5) unsigned | Null:YES | Key:MUL | Default:
+  received_date | date | Null:YES | Key: | Default:
+  revised_date | date | Null:YES | Key: | Default:
+  accepted_date | date | Null:YES | Key: | Default:
+  published_date | date | Null:YES | Key:MUL | Default:
+  page_start | varchar(30) | Null:YES | Key: | Default:
+  page_end | varchar(30) | Null:YES | Key: | Default:
+  doi | varchar(255) | Null:YES | Key:UNI | Default:
+  section | varchar(150) | Null:YES | Key: | Default:
+  license | varchar(255) | Null:YES | Key: | Default:CC BY 4.0
+  rights_statement | text | Null:YES | Key: | Default:
+  pdf_file | varchar(500) | Null:YES | Key: | Default:
+  supplementary_file | varchar(500) | Null:YES | Key: | Default:
+  graphical_abstract | varchar(500) | Null:YES | Key: | Default:
+  cover_image | varchar(500) | Null:YES | Key: | Default:
+  status | varchar(40) | Null:NO | Key:MUL | Default:DRAFT
+  created_by | int(10) unsigned | Null:YES | Key: | Default:
+  created_at | datetime | Null:NO | Key: | Default:current_timestamp()
+  updated_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: audit_log
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  user_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  manuscript_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  action | varchar(120) | Null:NO | Key: | Default:
+  details | text | Null:YES | Key: | Default:
+  ip_address | varchar(45) | Null:YES | Key: | Default:
+  created_at | datetime | Null:YES | Key: | Default:current_timestamp()
+
+TABLE: decisions
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  user_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  decision | enum('SEND_FOR_REVIEW','TECHNICAL_CORRECTION','ACCEPT','MINOR_REVISION','MAJOR_REVISION','REJECT','WITHDRAW') | Null:NO | Key: | Default:
+  notes | text | Null:YES | Key: | Default:
+  created_at | datetime | Null:YES | Key: | Default:current_timestamp()
+
+TABLE: ew_audit_log
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  user_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  action | varchar(100) | Null:NO | Key: | Default:
+  details | text | Null:YES | Key: | Default:
+  ip_address | varchar(45) | Null:YES | Key: | Default:
+  created_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: ew_author_proof_approval
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  proof_id | int(10) unsigned | Null:YES | Key: | Default:
+  author_id | int(10) unsigned | Null:YES | Key: | Default:
+  decision | varchar(50) | Null:YES | Key: | Default:pending
+  comments | text | Null:YES | Key: | Default:
+  approved_at | datetime | Null:YES | Key: | Default:
+  created_at | datetime | Null:YES | Key: | Default:current_timestamp()
+
+TABLE: ew_editor_assignments
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  editor_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  assigned_by | int(10) unsigned | Null:NO | Key:MUL | Default:
+  status | enum('active','ended') | Null:NO | Key: | Default:active
+  assigned_at | datetime | Null:NO | Key: | Default:current_timestamp()
+  ended_at | datetime | Null:YES | Key: | Default:
+
+TABLE: ew_editorial_decisions
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  decided_by | int(10) unsigned | Null:NO | Key:MUL | Default:
+  decision | enum('minor_revision','major_revision','accept','reject') | Null:NO | Key: | Default:
+  letter | text | Null:YES | Key: | Default:
+  created_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: ew_galley_proofs
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  proof_version | int(11) | Null:NO | Key: | Default:1
+  file_path | varchar(500) | Null:YES | Key: | Default:
+  comments | text | Null:YES | Key: | Default:
+  status | varchar(50) | Null:YES | Key: | Default:sent_to_author
+  created_by | int(10) unsigned | Null:YES | Key: | Default:
+  sent_at | datetime | Null:YES | Key: | Default:
+  corrections | text | Null:YES | Key: | Default:
+  approved_at | datetime | Null:YES | Key: | Default:
+  created_at | datetime | Null:YES | Key: | Default:current_timestamp()
+
+TABLE: ew_peer_reviews
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  assignment_id | int(10) unsigned | Null:NO | Key:UNI | Default:
+  recommendation | enum('accept','minor_revision','major_revision','reject') | Null:YES | Key: | Default:
+  comments_to_editor | text | Null:YES | Key: | Default:
+  comments_to_author | text | Null:YES | Key: | Default:
+  confidential_comments | text | Null:YES | Key: | Default:
+  submitted_at | datetime | Null:YES | Key: | Default:
+  created_at | datetime | Null:NO | Key: | Default:current_timestamp()
+  updated_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: ew_reviewer_assignments
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  reviewer_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  assigned_by | int(10) unsigned | Null:NO | Key:MUL | Default:
+  status | enum('invited','accepted','declined','in_review','completed','cancelled') | Null:NO | Key: | Default:invited
+  invited_at | datetime | Null:NO | Key: | Default:current_timestamp()
+  responded_at | datetime | Null:YES | Key: | Default:
+  due_at | datetime | Null:YES | Key: | Default:
+  completed_at | datetime | Null:YES | Key: | Default:
+
+TABLE: ew_reviewer_pool
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  user_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  full_name | varchar(190) | Null:NO | Key: | Default:
+  email | varchar(190) | Null:NO | Key:UNI | Default:
+  affiliation | varchar(255) | Null:YES | Key: | Default:
+  expertise | text | Null:YES | Key: | Default:
+  orcid | varchar(100) | Null:YES | Key: | Default:
+  active | tinyint(1) | Null:NO | Key: | Default:1
+  created_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: ew_revisions
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  version_no | int(10) unsigned | Null:NO | Key: | Default:
+  requested_by | int(10) unsigned | Null:NO | Key:MUL | Default:
+  response_text | longtext | Null:YES | Key: | Default:
+  status | enum('requested','received','under_review','accepted','rejected') | Null:NO | Key: | Default:requested
+  requested_at | datetime | Null:NO | Key: | Default:current_timestamp()
+  received_at | datetime | Null:YES | Key: | Default:
+
+TABLE: ew_technical_checks
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:UNI | Default:
+  checked_by | int(10) unsigned | Null:NO | Key:MUL | Default:
+  result | enum('pending','passed','minor_corrections','failed') | Null:NO | Key: | Default:pending
+  comments | text | Null:YES | Key: | Default:
+  checked_at | datetime | Null:YES | Key: | Default:
+  created_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: issues
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  volume | varchar(30) | Null:NO | Key:MUL | Default:
+  issue | varchar(30) | Null:NO | Key: | Default:
+  issue_title | varchar(255) | Null:YES | Key: | Default:
+  year | smallint(6) | Null:NO | Key: | Default:
+  publication_date | date | Null:YES | Key: | Default:
+
+TABLE: manuscript_authors
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  author_user_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  author_name | varchar(180) | Null:NO | Key: | Default:
+  affiliation | varchar(255) | Null:YES | Key: | Default:
+  email | varchar(190) | Null:YES | Key: | Default:
+  author_order | int(11) | Null:YES | Key: | Default:1
+
+TABLE: manuscript_versions
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  version_no | int(11) | Null:NO | Key: | Default:
+  file_path | varchar(500) | Null:NO | Key: | Default:
+  author_response | text | Null:YES | Key: | Default:
+  uploaded_by | int(10) unsigned | Null:YES | Key:MUL | Default:
+  created_at | datetime | Null:YES | Key: | Default:current_timestamp()
+
+TABLE: manuscripts
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  source_public_submission_id | bigint(20) unsigned | Null:YES | Key:UNI | Default:
+  manuscript_no | varchar(40) | Null:NO | Key:UNI | Default:
+  title | varchar(500) | Null:NO | Key: | Default:
+  abstract | mediumtext | Null:YES | Key: | Default:
+  keywords | varchar(1000) | Null:YES | Key: | Default:
+  article_type | varchar(100) | Null:YES | Key: | Default:
+  corresponding_author_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  corresponding_email | varchar(190) | Null:YES | Key: | Default:
+  assigned_editor_id | int(10) unsigned | Null:YES | Key:MUL | Default:
+  status | enum('SUBMITTED','TECHNICAL_CHECK','PLAGIARISM_CHECK','EDITORIAL_SCREENING','ASSIGNED_TO_EDITOR','REVIEWER_INVITATION','UNDER_REVIEW','REVISION_REQUIRED','REVISED_SUBMISSION','SECOND_REVIEW','ACCEPTED','PRODUCTION','PROOF_SENT','PROOF_APPROVED','IN_PRESS','PUBLISHED','REJECTED','WITHDRAWN') | Null:YES | Key: | Default:
+  version_no | int(11) | Null:YES | Key: | Default:1
+  similarity_percent | decimal(5,2) | Null:YES | Key: | Default:
+  plagiarism_notes | text | Null:YES | Key: | Default:
+  ethics_statement | text | Null:YES | Key: | Default:
+  conflict_statement | text | Null:YES | Key: | Default:
+  funding_statement | text | Null:YES | Key: | Default:
+  manuscript_file | varchar(500) | Null:YES | Key: | Default:
+  final_file | varchar(500) | Null:YES | Key: | Default:
+  submitted_at | datetime | Null:YES | Key: | Default:current_timestamp()
+  updated_at | datetime | Null:YES | Key: | Default:current_timestamp()
+  accepted_at | datetime | Null:YES | Key: | Default:
+  published_at | datetime | Null:YES | Key: | Default:
+
+TABLE: production
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:UNI | Default:
+  copyediting_status | enum('PENDING','IN_PROGRESS','COMPLETED') | Null:YES | Key: | Default:PENDING
+  typesetting_status | enum('PENDING','IN_PROGRESS','COMPLETED') | Null:YES | Key: | Default:PENDING
+  proof_status | enum('PENDING','SENT','APPROVED') | Null:YES | Key: | Default:PENDING
+  publication_status | enum('IN_PRESS','PUBLISHED') | Null:YES | Key: | Default:
+  volume | varchar(30) | Null:YES | Key: | Default:
+  issue | varchar(30) | Null:YES | Key: | Default:
+  year | smallint(6) | Null:YES | Key: | Default:
+  pages | varchar(50) | Null:YES | Key: | Default:
+  doi | varchar(255) | Null:YES | Key: | Default:
+  final_pdf | varchar(500) | Null:YES | Key: | Default:
+  notes | text | Null:YES | Key: | Default:
+
+TABLE: reviews
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  reviewer_id | int(10) unsigned | Null:NO | Key:MUL | Default:
+  status | enum('INVITED','ACCEPTED','DECLINED','SUBMITTED') | Null:YES | Key: | Default:INVITED
+  comments_to_editor | text | Null:YES | Key: | Default:
+  comments_to_author | text | Null:YES | Key: | Default:
+  recommendation | enum('ACCEPT','MINOR_REVISION','MAJOR_REVISION','REJECT') | Null:YES | Key: | Default:
+  invited_at | datetime | Null:YES | Key: | Default:current_timestamp()
+  accepted_at | datetime | Null:YES | Key: | Default:
+  due_at | datetime | Null:YES | Key: | Default:
+  submitted_at | datetime | Null:YES | Key: | Default:
+
+TABLE: users
+  id | int(10) unsigned | Null:NO | Key:PRI | Default:
+  full_name | varchar(180) | Null:NO | Key: | Default:
+  email | varchar(190) | Null:NO | Key:UNI | Default:
+  password_hash | varchar(255) | Null:NO | Key: | Default:
+  role | enum('admin','editor_in_chief','editor','managing_editor','reviewer','author','production') | Null:NO | Key: | Default:
+  affiliation | varchar(255) | Null:YES | Key: | Default:
+  phone | varchar(50) | Null:YES | Key: | Default:
+  orcid | varchar(100) | Null:YES | Key: | Default:
+  expertise | text | Null:YES | Key: | Default:
+  active | tinyint(1) | Null:YES | Key: | Default:1
+  created_at | datetime | Null:YES | Key: | Default:current_timestamp()
+
+=== DATABASE: ajsmrjournal ===
+
+TABLE: adminusers
+  auid | int(10) | Null:NO | Key:PRI | Default:
+  fname | varchar(100) | Null:NO | Key: | Default:
+  lname | varchar(100) | Null:NO | Key: | Default:
+  username | varchar(100) | Null:NO | Key: | Default:
+  password | varchar(100) | Null:NO | Key: | Default:
+  email | varchar(100) | Null:NO | Key: | Default:
+  status | tinyint(1) | Null:NO | Key: | Default:1
+
+TABLE: ajsmr_abstracts
+  contentid | int(11) | Null:NO | Key:PRI | Default:
+  conttitle | text | Null:NO | Key: | Default:
+  issuedetails | text | Null:NO | Key: | Default:
+  authors | text | Null:NO | Key: | Default:
+  journal | text | Null:NO | Key: | Default:
+  doi | text | Null:NO | Key: | Default:
+  abstract | varchar(255) | Null:NO | Key: | Default:
+  abstractsdesc | text | Null:NO | Key: | Default:
+  referencestxt | text | Null:NO | Key: | Default:
+  keywords | text | Null:NO | Key: | Default:
+  howtoguide | text | Null:NO | Key: | Default:
+  articledates | text | Null:NO | Key: | Default:
+  status | int(1) | Null:NO | Key: | Default:1
+
+TABLE: ajsmr_abstracts1
+  contentid | int(10) | Null:NO | Key:PRI | Default:
+  conttitle | text | Null:NO | Key: | Default:
+  authors | text | Null:NO | Key: | Default:
+  abstracttxt | text | Null:NO | Key: | Default:
+  citethisarticle | text | Null:NO | Key: | Default:
+  keyworkds | text | Null:NO | Key: | Default:
+  doi | text | Null:NO | Key: | Default:
+  published | text | Null:NO | Key: | Default:
+  abstract | varchar(255) | Null:NO | Key: | Default:
+  referencestxt | text | Null:NO | Key: | Default:
+  status | tinyint(1) | Null:NO | Key: | Default:1
+
+TABLE: ajsmr_issuecontent
+  contentid | int(10) | Null:NO | Key:PRI | Default:
+  catid | int(10) | Null:NO | Key: | Default:
+  type | text | Null:NO | Key: | Default:
+  conttitle | text | Null:NO | Key: | Default:
+  authors | text | Null:NO | Key: | Default:
+  journal | text | Null:NO | Key: | Default:
+  recevied | text | Null:NO | Key: | Default:
+  accepted | text | Null:NO | Key: | Default:
+  published | text | Null:NO | Key: | Default:
+  doi | text | Null:NO | Key: | Default:
+  abstract | varchar(250) | Null:NO | Key: | Default:
+  absurl | varchar(255) | Null:NO | Key: | Default:
+  fullpaper | varchar(250) | Null:NO | Key: | Default:
+  photopath | varchar(255) | Null:NO | Key: | Default:
+  description | text | Null:NO | Key: | Default:
+  programdate | date | Null:NO | Key: | Default:
+  status | tinyint(1) | Null:NO | Key: | Default:1
+
+TABLE: ajsmr_issueyears
+  catid | int(10) | Null:NO | Key:PRI | Default:
+  catename | text | Null:NO | Key: | Default:
+  eventdate | date | Null:NO | Key: | Default:
+  status | tinyint(1) | Null:NO | Key: | Default:1
+
+TABLE: ajsmr_submission_affiliations
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  submission_id | bigint(20) unsigned | Null:NO | Key:MUL | Default:
+  affiliation_no | int(10) unsigned | Null:NO | Key: | Default:
+  department | varchar(500) | Null:YES | Key: | Default:
+  institution | varchar(500) | Null:NO | Key: | Default:
+  city | varchar(150) | Null:YES | Key: | Default:
+  state | varchar(150) | Null:YES | Key: | Default:
+  country | varchar(150) | Null:NO | Key: | Default:
+
+TABLE: ajsmr_submission_authors
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  submission_id | bigint(20) unsigned | Null:NO | Key:MUL | Default:
+  author_order | int(10) unsigned | Null:NO | Key: | Default:
+  given_name | varchar(150) | Null:NO | Key: | Default:
+  middle_name | varchar(150) | Null:YES | Key: | Default:
+  family_name | varchar(150) | Null:NO | Key: | Default:
+  email | varchar(255) | Null:YES | Key: | Default:
+  orcid | varchar(50) | Null:YES | Key: | Default:
+  department | varchar(255) | Null:YES | Key: | Default:
+  institution | varchar(500) | Null:NO | Key: | Default:
+  city | varchar(150) | Null:YES | Key: | Default:
+  state | varchar(150) | Null:YES | Key: | Default:
+  country | varchar(150) | Null:NO | Key: | Default:
+  contribution | text | Null:YES | Key: | Default:
+  is_corresponding | tinyint(1) | Null:NO | Key: | Default:0
+
+TABLE: ajsmr_submission_files
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  submission_id | bigint(20) unsigned | Null:NO | Key:MUL | Default:
+  file_type | varchar(60) | Null:NO | Key: | Default:
+  original_name | varchar(255) | Null:NO | Key: | Default:
+  stored_name | varchar(255) | Null:NO | Key: | Default:
+  relative_path | varchar(500) | Null:NO | Key: | Default:
+  mime_type | varchar(150) | Null:NO | Key: | Default:
+  file_size | bigint(20) unsigned | Null:NO | Key: | Default:
+  sha256 | char(64) | Null:NO | Key: | Default:
+  uploaded_at | datetime | Null:NO | Key: | Default:current_timestamp()
+
+TABLE: ajsmr_submission_reviewers
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  submission_id | bigint(20) unsigned | Null:NO | Key:MUL | Default:
+  reviewer_type | varchar(20) | Null:NO | Key: | Default:
+  full_name | varchar(255) | Null:NO | Key: | Default:
+  institution | varchar(500) | Null:YES | Key: | Default:
+  country | varchar(150) | Null:YES | Key: | Default:
+  email | varchar(255) | Null:YES | Key: | Default:
+  orcid | varchar(50) | Null:YES | Key: | Default:
+  expertise | varchar(1000) | Null:YES | Key: | Default:
+  exclusion_reason | varchar(1000) | Null:YES | Key: | Default:
+
+TABLE: ajsmr_submissions
+  id | bigint(20) unsigned | Null:NO | Key:PRI | Default:
+  manuscript_no | varchar(32) | Null:NO | Key:UNI | Default:
+  article_type | varchar(100) | Null:NO | Key: | Default:
+  title | text | Null:NO | Key: | Default:
+  running_title | varchar(500) | Null:YES | Key: | Default:
+  abstract_text | longtext | Null:NO | Key: | Default:
+  keywords | text | Null:YES | Key: | Default:
+  word_count | int(10) unsigned | Null:YES | Key: | Default:
+  figure_count | int(10) unsigned | Null:YES | Key: | Default:
+  table_count | int(10) unsigned | Null:YES | Key: | Default:
+  corresponding_name | varchar(255) | Null:NO | Key: | Default:
+  corresponding_email | varchar(255) | Null:NO | Key:MUL | Default:
+  corresponding_orcid | varchar(50) | Null:YES | Key: | Default:
+  corresponding_institution | varchar(500) | Null:NO | Key: | Default:
+  corresponding_department | varchar(255) | Null:YES | Key: | Default:
+  corresponding_city | varchar(150) | Null:YES | Key: | Default:
+  corresponding_state | varchar(150) | Null:YES | Key: | Default:
+  corresponding_country | varchar(150) | Null:NO | Key: | Default:
+  corresponding_postal_code | varchar(30) | Null:YES | Key: | Default:
+  corresponding_phone | varchar(50) | Null:YES | Key: | Default:
+  funding_status | varchar(20) | Null:NO | Key: | Default:none
+  funding_statement | text | Null:YES | Key: | Default:
+  conflict_status | varchar(20) | Null:NO | Key: | Default:none
+  conflict_statement | text | Null:YES | Key: | Default:
+  ethics_status | varchar(30) | Null:NO | Key: | Default:not_applicable
+  ethics_statement | text | Null:YES | Key: | Default:
+  ethics_committee | varchar(500) | Null:YES | Key: | Default:
+  ethics_approval_no | varchar(255) | Null:YES | Key: | Default:
+  ethics_approval_date | varchar(50) | Null:YES | Key: | Default:
+  consent_status | varchar(30) | Null:NO | Key: | Default:not_applicable
+  trial_registry | varchar(255) | Null:YES | Key: | Default:
+  trial_number | varchar(255) | Null:YES | Key: | Default:
+  trial_date | varchar(50) | Null:YES | Key: | Default:
+  data_status | varchar(30) | Null:NO | Key: | Default:not_applicable
+  data_repository | varchar(500) | Null:YES | Key: | Default:
+  data_identifier | varchar(500) | Null:YES | Key: | Default:
+  ai_status | varchar(10) | Null:NO | Key: | Default:no
+  ai_statement | text | Null:YES | Key: | Default:
+  originality_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  authors_approved | tinyint(1) | Null:NO | Key: | Default:0
+  exclusive_submission_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  accuracy_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  permissions_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  privacy_confirmed | tinyint(1) | Null:NO | Key: | Default:0
+  status | varchar(40) | Null:NO | Key:MUL | Default:submitted
+  submitted_at | datetime | Null:NO | Key:MUL | Default:current_timestamp()
+  ip_hash | char(64) | Null:YES | Key: | Default:
+  user_agent_hash | char(64) | Null:YES | Key: | Default:
+
+TABLE: contentpages
+  conid | int(11) | Null:NO | Key:PRI | Default:
+  title | text | Null:NO | Key: | Default:
+  dailytitle | text | Null:NO | Key: | Default:
+  description | text | Null:NO | Key: | Default:
+  photopath | varchar(255) | Null:NO | Key: | Default:
+  photopath2 | varchar(250) | Null:NO | Key: | Default:
+  photopath3 | varchar(250) | Null:NO | Key: | Default:
+  photopath4 | varchar(250) | Null:NO | Key: | Default:
+  photopath5 | varchar(250) | Null:NO | Key: | Default:
+  photopath6 | varchar(250) | Null:NO | Key: | Default:
+  photopath7 | varchar(250) | Null:NO | Key: | Default:
+  photopath8 | varchar(250) | Null:NO | Key: | Default:
+  publishdate | date | Null:NO | Key: | Default:
+  status | tinyint(4) | Null:NO | Key: | Default:1
+
+TABLE: editorialboards
+  rid | int(11) | Null:NO | Key:PRI | Default:
+  intrestedtojoin | varchar(100) | Null:NO | Key: | Default:
+  name | varchar(100) | Null:NO | Key: | Default:
+  designation | text | Null:NO | Key: | Default:
+  substeam | text | Null:NO | Key: | Default:
+  pnumber | varchar(20) | Null:NO | Key: | Default:
+  email | varchar(50) | Null:NO | Key: | Default:
+  txtmessage | text | Null:NO | Key: | Default:
+  filepath | varchar(150) | Null:NO | Key: | Default:
+  status | tinyint(1) | Null:NO | Key: | Default:1
+
+TABLE: submitmanuscripts
+  suid | int(11) | Null:NO | Key:PRI | Default:
+  manuscripttitle | text | Null:NO | Key: | Default:
+  authorname | text | Null:NO | Key: | Default:
+  coauthorname | text | Null:NO | Key: | Default:
+  noofauthors | varchar(20) | Null:NO | Key: | Default:
+  authoraffiliation | varchar(150) | Null:NO | Key: | Default:
+  cname | text | Null:NO | Key: | Default:
+  cauthemail | varchar(150) | Null:NO | Key: | Default:
+  substeam | text | Null:NO | Key: | Default:
+  filepath | varchar(250) | Null:NO | Key: | Default:
+  filepath2 | varchar(250) | Null:NO | Key: | Default:
+  status | tinyint(1) | Null:NO | Key: | Default:1
+
+TABLE: templatesandcopyrights
+  contentid | int(10) | Null:NO | Key:PRI | Default:
+  catid | int(10) | Null:NO | Key: | Default:
+  type | text | Null:NO | Key: | Default:
+  conttitle | text | Null:NO | Key: | Default:
+  authors | text | Null:NO | Key: | Default:
+  journal | text | Null:NO | Key: | Default:
+  recevied | text | Null:NO | Key: | Default:
+  accepted | text | Null:NO | Key: | Default:
+  published | text | Null:NO | Key: | Default:
+  doi | text | Null:NO | Key: | Default:
+  abstract | varchar(250) | Null:NO | Key: | Default:
+  fullpaper | varchar(250) | Null:NO | Key: | Default:
+  photopath | varchar(255) | Null:NO | Key: | Default:
+  description | text | Null:NO | Key: | Default:
+  programdate | date | Null:NO | Key: | Default:
+  status | tinyint(1) | Null:NO | Key: | Default:1
+
+DONE
