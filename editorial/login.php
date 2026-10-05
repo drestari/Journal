@@ -112,7 +112,7 @@ input:focus{border-color:#3778b8;box-shadow:0 0 0 3px #3778b81f}.pass{position:r
 </div>
 <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" value="<?=e($_POST['email']??'')?>" autocomplete="username" required></div>
 <div class="field"><label for="password">Password</label><div class="pass"><input id="password" name="password" type="password" autocomplete="current-password" required><button class="toggle" type="button" onclick="togglePassword()">SHOW</button></div></div>
-<div class="options"><label class="remember"><input type="checkbox" name="remember" value="1"><span>Remember me</span></label><a class="forgot" href="mailto:editorajsmr@gmail.com?subject=AJSMR%20Password%20Reset">Forgot password?</a></div>
+<div class="options"><label class="remember"><input type="checkbox" name="remember" value="1"><span>Remember me</span></label><a class="forgot" href="forgot_password.php">Forgot password?</a></div>
 <button class="btn" type="submit">SIGN IN</button></form>
 <div class="register">Don't have an account?<a href="register.php">Register as Author</a></div>
 <div class="contact">Editor-in-Chief? <a href="eic-login.php" style="font-weight:bold;color:#0b5fa5;">Sign in to EIC Portal</a> &bull; Need assistance? <a href="mailto:editorajsmr@gmail.com">Contact Office</a></div>
