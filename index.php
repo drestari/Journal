@@ -21,6 +21,50 @@ if (!function_exists('ajsmr_clean_path')) {
     }
 }
 
+if (!function_exists('ajsmr_clean_image_path')) {
+    function ajsmr_clean_image_path(array $art): string {
+        $raw = '';
+        foreach (['photopath', 'cover_image', 'photo_img'] as $k) {
+            if (isset($art[$k]) && trim((string)$art[$k]) !== '') {
+                $raw = trim((string)$art[$k]);
+                break;
+            }
+        }
+        if ($raw === '') return '';
+        $s = trim(str_replace('\\', '/', $raw));
+        if (preg_match('~^https?://~i', $s)) return $s;
+        while (str_starts_with($s, '../')) $s = substr($s, 3);
+        while (str_starts_with($s, './')) $s = substr($s, 2);
+        $s = ltrim($s, '/');
+        if (!str_starts_with($s, 'issuesimgs/') && !str_starts_with($s, 'images/')) {
+            $s = 'issuesimgs/' . $s;
+        }
+        return $s;
+    }
+}
+
+if (!function_exists('ajsmr_clean_pdf_path')) {
+    function ajsmr_clean_pdf_path(array $art): string {
+        $raw = '';
+        foreach (['pdf_file', 'fullpaper', 'full_paper', 'abstract'] as $k) {
+            if (isset($art[$k]) && trim((string)$art[$k]) !== '' && str_contains(strtolower((string)$art[$k]), '.pdf')) {
+                $raw = trim((string)$art[$k]);
+                break;
+            }
+        }
+        if ($raw === '') return '';
+        $s = trim(str_replace('\\', '/', $raw));
+        if (preg_match('~^https?://~i', $s)) return $s;
+        while (str_starts_with($s, '../')) $s = substr($s, 3);
+        while (str_starts_with($s, './')) $s = substr($s, 2);
+        $s = ltrim($s, '/');
+        if (!str_starts_with($s, 'pdffiles/')) {
+            $s = 'pdffiles/' . $s;
+        }
+        return $s;
+    }
+}
+
 /* ── Fetch Current Issue & Articles ── */
 $current_issue_title = 'Current Issue';
 $current_issue_articles = [];
@@ -424,8 +468,8 @@ if ($db) {
               $art_authors  = $art['authors'] ?? '';
               $art_citation = $art['issuedetails'] ?? ($art['journal'] ?? 'The American Journal of Science and Medical Research');
               $art_doi      = trim((string)($art['doi'] ?? ''));
-              $art_pdf      = ajsmr_clean_path($art['pdf_file'] ?? '');
-              $art_img      = ajsmr_clean_path($art['cover_image'] ?? '');
+              $art_pdf      = ajsmr_clean_pdf_path($art);
+              $art_img      = ajsmr_clean_image_path($art);
               $art_id       = (int)($art['contentid'] ?? 0);
               $art_type     = trim((string)($art['article_type'] ?? ($art['type'] ?? 'Research Article')));
               if ($art_type === '') {
