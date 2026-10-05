@@ -63,9 +63,11 @@ $r = $ajsmr_root; // short alias for URL prefix
       <i></i><span>▣ &nbsp;<?=ajsmr_h($frequency)?></span>
     </div>
     <div class="utility-right">
-      <a href="mailto:editorajsmr@gmail.com">✉ &nbsp;editorajsmr@gmail.com</a>
+      <a href="mailto:editor@ajsmrjournal.com">✉ &nbsp;editor@ajsmrjournal.com</a>
       <i></i>
       <a href="<?=ajsmr_h($r)?>editorial/eic-login.php">↪ &nbsp;Editorial Login</a>
+      <i></i>
+      <a href="editorial/login.php">↪ &nbsp;Sign In</a>
     </div>
   </div>
 </div>
@@ -75,7 +77,7 @@ $r = $ajsmr_root; // short alias for URL prefix
      ============================================================ -->
 <header class="identity">
   <div class="container identity-inner">
-    <a class="journal-brand" href="<?=ajsmr_h($r)?>index_ajsmr_v5_8.php">
+    <a class="journal-brand" href="<?=ajsmr_h($r)?>index.php">
       <img class="brand-logo-image" src="<?=ajsmr_h($r)?>images/ajsmr-logo.png"
            alt="AJSMR logo">
       <div class="brand-copy">
@@ -105,7 +107,7 @@ $r = $ajsmr_root; // short alias for URL prefix
     <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false">☰ Menu</button>
 
     <div class="nav-links" id="navLinks">
-      <a<?=ajsmr_nav_active('home')?> href="<?=ajsmr_h($r)?>index_ajsmr_v5_8.php">Home</a>
+      <a<?=ajsmr_nav_active('home')?> href="<?=ajsmr_h($r)?>index.php">Home</a>
 
       <div class="drop">
         <button<?=ajsmr_nav_active('journal')?> type="button">Journal Info <span>⌄</span></button>

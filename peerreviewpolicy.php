@@ -226,6 +226,6 @@ require_once __DIR__ . '/includes/ajsmr_header.php';
 </main>
 
 <?php require_once __DIR__ . '/includes/ajsmr_footer.php'; ?>
-
+ 
 </body>
 </html>

@@ -169,7 +169,7 @@ $publisher = 'Advaitha Innovative Research Association (AIRA)';
 <!-- Journal identity header -->
 <header class="identity">
   <div class="container identity-inner">
-    <a class="journal-brand" href="index_ajsmr_v5_8.php">
+    <a class="journal-brand" href="index.php">
       <img class="brand-logo-image" src="images/ajsmr-logo.png" alt="AJSMR logo">
       <div class="brand-copy">
         <div class="script-title">The American Journal of</div>
@@ -196,7 +196,7 @@ $publisher = 'Advaitha Innovative Research Association (AIRA)';
     <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false">☰ Menu</button>
 
     <div class="nav-links" id="navLinks">
-      <a href="index_ajsmr_v5_8.php">Home</a>
+      <a href="index.php">Home</a>
 
       <div class="drop">
         <button type="button">Journal Info <span>⌄</span></button>
@@ -263,7 +263,7 @@ $publisher = 'Advaitha Innovative Research Association (AIRA)';
   <div class="container">
 
     <div class="policy-breadcrumb">
-      <a href="index_ajsmr_v5_8.php">Home</a>
+      <a href="index.php">Home</a>
       <span> &nbsp;›&nbsp; </span>
       <span>Policies</span>
     </div>

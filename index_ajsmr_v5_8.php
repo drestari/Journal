@@ -268,7 +268,7 @@ if ($db) {
      ============================================================ -->
 <header class="identity">
   <div class="container identity-inner">
-    <a class="journal-brand" href="index_ajsmr_v5_8.php">
+    <a class="journal-brand" href="index.php">
       <img class="brand-logo-image" src="images/ajsmr-logo.png"
            alt="AJSMR logo">
       <div class="brand-copy">
@@ -298,7 +298,7 @@ if ($db) {
     <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false">☰ Menu</button>
 
     <div class="nav-links" id="navLinks">
-      <a class="active" href="index_ajsmr_v5_8.php">Home</a>
+      <a class="active" href="index.php">Home</a>
 
       <div class="drop">
         <button type="button">Journal Info <span>⌄</span></button>

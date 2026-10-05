@@ -474,7 +474,7 @@ require_once __DIR__ . '/includes/ajsmr_header.php';
       <article class="policy-content">
 
         <div class="page-breadcrumb">
-          <a href="index_ajsmr_v5_8.php">Home</a>
+          <a href="index.php">Home</a>
           <span> &nbsp;›&nbsp; </span>
           <a href="aboutjournal.php">About Journal</a>
           <span> &nbsp;›&nbsp; </span>

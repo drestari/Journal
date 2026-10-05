@@ -9,7 +9,7 @@ body{margin:0;background:#f7f9fc;font-family:Arial,Helvetica,sans-serif;color:#3
 $ajsmr_active_nav = 'policies';
 require_once __DIR__ . '/includes/ajsmr_header.php';
 ?>
-<main id="main"><article class="card"><div class="crumb"><a href="index_ajsmr_v5_8.php">Home</a> › Policies</div><div class="eyebrow">AJSMR POLICY HUB</div><h1>AJSMR Policies</h1>
+<main id="main"><article class="card"><div class="crumb"><a href="index.php">Home</a> › Policies</div><div class="eyebrow">AJSMR POLICY HUB</div><h1>AJSMR Policies</h1>
 <div class="intro">The Policies menu has been reorganized. The previous seven policy-page links have been removed from the Policies dropdown and replaced by the new policy documents supplied for this section.</div>
 <div class="grid"><div class="item"><a href="complaintsappealspolicy.php">Complaints &amp; Appeals Policy</a></div><div class="item"><a href="researchethicsconsent.php">Research Ethics, Consent &amp; Clinical/Animal Research</a></div><div class="item"><a href="authordeclarations.php">Conflict of Interest, Funding &amp; Author Contributions</a></div><div class="item"><a href="dataavailabilitypolicy.php">Data Availability &amp; Research Data Policy</a></div><div class="item"><a href="aigenerativeaipolicy.php">AI &amp; Generative AI Policy</a></div><div class="item"><a href="publicationcharges.php">Publication Charges &amp; Waiver Policy</a></div><div class="item"><a href="licensecopyright.php">Open Access, Copyright &amp; Licensing Policy</a></div><div class="item"><a href="editorialindependence.php">Editorial Independence Policy</a></div></div></article></main>
 <?php require_once __DIR__ . '/includes/ajsmr_footer.php'; ?>

@@ -68,7 +68,7 @@
                                             <li><a href="vision.html">Our Vision </a></li>
                                         </ul>
                                     </li>-->
-									<li class="current"><a href="home.php">Home</a></li>
+									<li class="current"><a href="index.php">Home</a></li>
 									<li><a href="editorialboard.php">Editorial Board</a></li>
 									<li><a href="authorguidelines.php"> Author Guidelines</a></li>
 									<li><a href="submitmanuscript.php">Submit Manuscript </a></li>
@@ -106,7 +106,7 @@
                             
                             <div class="navbar-collapse collapse clearfix">
                                 <ul class="navigation clearfix">
-								<li><a href="home.php">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li><a href="editorialboard.php">Editorial Board</a></li>
 								<li><a href="authorguidelines.php"> Author Guidelines</a></li>
 								<li><a href="submitmanuscript.php">Submit Manuscript </a></li>

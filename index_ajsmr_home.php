@@ -144,7 +144,7 @@ $schema = [
 
 <header class="site-header">
   <div class="container identity">
-    <a class="brand" href="index_ajsmr_home.php" aria-label="AJSMR Home">
+    <a class="brand" href="index.php" aria-label="AJSMR Home">
       <span class="brand-mark">AJSMR</span>
       <span class="brand-title"><?=h($journal)?></span>
     </a>
@@ -163,7 +163,7 @@ $schema = [
       <button class="menu-button" id="menuButton" type="button" aria-expanded="false">Menu</button>
 
       <div class="nav-links" id="navLinks">
-        <a class="active" href="index_ajsmr_home.php">Home</a>
+        <a class="active" href="index.php">Home</a>
         <a href="editorialboard.php">Editorial Board</a>
         <a href="authorguidelines.php">For Authors</a>
         <a href="currentissue.php">Current Issue</a>

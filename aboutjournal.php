@@ -207,7 +207,7 @@ $publisher = 'Advaitha Innovative Research Association (AIRA)';
      ============================================================ -->
 <header class="identity">
   <div class="container identity-inner">
-    <a class="journal-brand" href="index_ajsmr_v5_8.php">
+    <a class="journal-brand" href="index.php">
       <img class="brand-logo-image" src="images/ajsmr-logo.png"
            alt="AJSMR logo">
       <div class="brand-copy">
