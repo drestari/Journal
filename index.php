@@ -79,7 +79,7 @@ if ($db) {
         }
         $catid = (int)$issue_row['catid'];
         
-        $art_st = mysqli_prepare($db, "SELECT * FROM ajsmr_issuecontent WHERE status=1 AND catid=? ORDER BY contentid DESC");
+        $art_st = mysqli_prepare($db, "SELECT * FROM ajsmr_issuecontent WHERE status=1 AND catid=? ORDER BY contentid DESC LIMIT 4");
         if ($art_st) {
             mysqli_stmt_bind_param($art_st, 'i', $catid);
             mysqli_stmt_execute($art_st);
@@ -93,7 +93,7 @@ if ($db) {
     
     // Fallback if active issue has no articles attached yet
     if (empty($current_issue_articles)) {
-        $fallback_q = @mysqli_query($db, "SELECT * FROM ajsmr_issuecontent WHERE status=1 ORDER BY contentid DESC LIMIT 10");
+        $fallback_q = @mysqli_query($db, "SELECT * FROM ajsmr_issuecontent WHERE status=1 ORDER BY contentid DESC LIMIT 4");
         if ($fallback_q) {
             while ($r = mysqli_fetch_assoc($fallback_q)) {
                 $current_issue_articles[] = $r;
@@ -284,7 +284,7 @@ if ($db) {
     </div>
 
     <form class="search" action="search.php" method="get">
-      <input type="search" name="q" placeholder="Search articles/Authors..." aria-label="Search articles" value="<?=isset($_GET['q']) ? ajsmr_h($_GET['q']) : ''?>">
+      <input type="search" name="q" placeholder="Search Articles/Authors..." aria-label="Search articles" value="<?=isset($_GET['q']) ? ajsmr_h($_GET['q']) : ''?>">
       <button type="submit" aria-label="Search">⌕</button>
     </form>
   </div>
