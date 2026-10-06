@@ -243,16 +243,16 @@ require_once __DIR__ . '/includes/ajsmr_header.php';
                                     Dr. M. Praveen Kumar Ph.D.,<br>
 									Synteny Life Sciences Pvt Ltd<br>
 									Hyderabad, Telangana State, India<br>
-									Email: editorajsmr@gmail.com<br>
+									Email: editor@ajsmrjournal.com<br>
                                     </li>
                                     <li>
                                         <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span>
-                                        <h5>e-Mail</h5> <a href="maito:editorajsmr@gmail.com">
-										editorajsmr@gmail.com</a>
+                                        <h5>e-Mail</h5> <a href="mailto:editor@ajsmrjournal.com">
+										editor@ajsmrjournal.com</a>
                                     </li>
 									<li>
 										<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18M5 6.5h14M5 17.5h14"/></svg></span>
-										<h5>Website</h5><a href="http://ajsmrjournal.com" target="_blank">http://ajsmrjournal.com</a>
+										<h5>Website</h5><a href="https://ajsmrjournal.com" target="_blank">https://ajsmrjournal.com</a>
                                     </li>
 									<li>
 									
@@ -278,7 +278,7 @@ require_once __DIR__ . '/includes/ajsmr_header.php';
 									Chief Editor, AJSMR<br>
 									Synteny Life Sciences Pvt Ltd<br>
 									Hyderabad, Telangana State, India<br>
-									Email: editorajsmr@gmail.com<br></a>
+									Email: editor@ajsmrjournal.com<br></a>
 										
                                     </li>
 									<li>

@@ -93,7 +93,7 @@ $r = $ajsmr_root; // short alias for URL prefix
     </div>
 
     <form class="search" action="<?=ajsmr_h($r)?>search.php" method="get">
-      <input type="search" name="q" placeholder="Search articles..." aria-label="Search articles">
+      <input type="search" name="q" placeholder="Search articles/Authors..." aria-label="Search articles" value="<?=isset($_GET['q']) ? ajsmr_h($_GET['q']) : ''?>">
       <button type="submit" aria-label="Search">⌕</button>
     </form>
   </div>
