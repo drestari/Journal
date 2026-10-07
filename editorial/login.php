@@ -71,52 +71,881 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 $csrfToken = csrf();
+$selectedLoginRole = strtolower((string)($_POST['login_role'] ?? 'author'));
 ?>
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AJSMR Editorial Office | Sign In</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Author / Reviewer Sign In — AJSMR Editorial Management System</title>
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#263238}
-.shell{min-height:100vh;display:grid;grid-template-columns:45% 55%}.brand{background:linear-gradient(145deg,#092b5f,#0b4d91,#1769aa);color:#fff;padding:56px;display:flex;flex-direction:column;justify-content:space-between}
-.logo{width:66px;height:66px;border-radius:14px;background:#fff;color:#0a4079;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:800;margin-bottom:30px}
-.brand h2{font-size:43px;margin:0 0 12px}.sub{font-size:17px;line-height:1.55;max-width:430px;color:#eef5fb}
-.features{list-style:none;padding:0;margin:42px 0}.features li{margin:17px 0;font-size:15px;padding-left:27px}.features li:before{content:"✓";margin-left:-27px;margin-right:12px;font-weight:bold}
-.brandfoot{font-size:13px;color:#d7e4ef}.form{background:#fff;display:flex;align-items:center;justify-content:center;padding:42px}.wrap{width:100%;max-width:475px}
-.eyebrow{text-transform:uppercase;font-size:12px;font-weight:bold;letter-spacing:1.6px;color:#4776a5;margin-bottom:10px}
-h1{font-size:31px;margin:0 0 10px;color:#172b4d}.intro{font-size:15px;color:#697586;line-height:1.55;margin:0 0 28px}
-.alert{border-radius:8px;padding:12px 14px;margin-bottom:18px;font-size:14px}.error{background:#fff1f0;border:1px solid #ffd1cc;color:#a52a20}
-.field{margin-bottom:18px}label{display:block;font-size:13px;font-weight:bold;color:#344054;margin-bottom:7px}.role-note{font-size:12px;line-height:1.45;color:#7b8794;margin-top:7px}
-input[type=email],input[type=password],select[name=login_role]{width:100%;height:48px;border:1px solid #d8dee8;border-radius:7px;padding:0 14px;font-size:15px;outline:none;background:#fff;color:#263238}
-input:focus{border-color:#3778b8;box-shadow:0 0 0 3px #3778b81f}.pass{position:relative}.pass input{padding-right:65px}.toggle{position:absolute;right:0;top:0;height:48px;border:0;background:none;padding:0 14px;color:#376b99;font-weight:bold;font-size:12px;cursor:pointer}
-.options{display:flex;justify-content:space-between;align-items:center;margin:2px 0 22px;font-size:13px}.remember{display:flex;gap:8px;align-items:center;color:#667085}.remember input{margin:0}.forgot,.register a{color:#0b5fa5;text-decoration:none;font-weight:bold}.btn{width:100%;height:49px;border:0;border-radius:7px;background:#0b5fa5;color:#fff;font-weight:800;cursor:pointer}.btn:hover{background:#084d88}
-.register{text-align:center;margin-top:23px;padding-top:22px;border-top:1px solid #edf0f4;color:#667085;font-size:14px}.register a{margin-left:5px}.contact{text-align:center;margin-top:20px;font-size:13px;color:#98a2b3}.contact a{color:#667085}.copy{text-align:center;margin-top:32px;color:#98a2b3;font-size:11px}
-@media(max-width:900px){.shell{grid-template-columns:1fr}.brand{padding:38px 30px;min-height:360px}.brand h2{font-size:36px}.form{padding:38px 24px}}
-</style></head>
-<body><div class="shell">
-<section class="brand"><div><div class="logo">AJ</div><h2>AJSMR</h2><div class="sub">The American Journal of Science and Medical Research</div>
-<ul class="features"><li>Secure manuscript submission and tracking</li><li>Editorial and peer-review workflow</li><li>Revision and decision management</li><li>Production and publication tracking</li></ul></div>
-<div class="brandfoot"><strong>Advaitha Innovative Research Association (AIRA)</strong><br>Editorial Management System</div></section>
-<main class="form"><div class="wrap"><div class="eyebrow">Editorial Office</div><h1>Sign in to your account</h1>
-<p class="intro">Select Author or Reviewer, then sign in to your AJSMR account.</p>
-<?php if($error): ?><div class="alert error"><?=e($error)?></div><?php endif; ?>
-<form method="post" action="login.php" autocomplete="on"><input type="hidden" name="csrf" value="<?=e($csrfToken)?>">
-<div class="field">
-<label for="login_role">Login As</label>
-<select id="login_role" name="login_role" required>
-<option value="author" <?php if (strtolower((string)($_POST['login_role'] ?? 'author')) === 'author') echo 'selected'; ?>>Author</option>
-<option value="reviewer" <?php if (strtolower((string)($_POST['login_role'] ?? '')) === 'reviewer') echo 'selected'; ?>>Reviewer</option>
-</select>
-<div class="role-note">Select <strong>Author</strong> or <strong>Reviewer</strong> according to your account type.</div>
+/* ============================================================
+   AJSMR INSTITUTIONAL LOGIN — PROFESSIONAL STYLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #1e293b;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 1. TOP UTILITY BAR (Institutional Dark Navy) */
+.gov-top-bar {
+  background-color: #073d72;
+  color: #ffffff;
+  font-size: 11px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+.gov-top-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 4px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gov-top-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+}
+
+.gov-top-left span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.bar-sep {
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.gov-top-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gov-top-right a {
+  color: #dbeafe;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.gov-top-right a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* 2. INSTITUTIONAL HEADER */
+.inst-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  flex-shrink: 0;
+}
+
+.inst-header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.inst-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #073d72;
+}
+
+.inst-logo {
+  width: 56px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
+.inst-brand-text {
+  min-width: 0;
+}
+
+.inst-script-title {
+  font-family: "Brush Script MT", "Brush Script Std", "Segoe Script", cursive;
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1;
+  color: #173c67;
+  white-space: nowrap;
+}
+
+.inst-stencil-title {
+  font-family: Stencil, "Stencil Std", "Impact", fantasy;
+  font-size: 19px;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
+  color: #073d72;
+  white-space: nowrap;
+}
+
+.inst-tagline {
+  margin: 2px 0 0 0;
+  color: #475569;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.25px;
+}
+
+.inst-header-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 7px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+}
+
+.inst-badge-icon {
+  font-size: 22px;
+  line-height: 1;
+  color: #0b5fa5;
+}
+
+.inst-badge-text {
+  text-align: right;
+  line-height: 1.25;
+}
+
+.inst-badge-title {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #092b5f;
+  text-transform: uppercase;
+}
+
+.inst-badge-desc {
+  font-size: 10.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* 3. MAIN WORKSPACE AREA */
+.main-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  box-sizing: border-box;
+}
+
+.stage-container {
+  max-width: 1140px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48% 52%;
+  gap: 40px;
+  align-items: center;
+}
+
+/* LEFT INFORMATION PANEL */
+.info-panel {
+  padding-right: 8px;
+}
+
+.eyebrow-pill {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  border: 1px solid #bae6fd;
+}
+
+.info-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #092b5f;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.info-desc {
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 14px 0;
+}
+
+.info-note {
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.info-list li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 7px;
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.info-list li::before {
+  content: "•";
+  position: absolute;
+  left: 3px;
+  top: -1px;
+  color: #0b5fa5;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.info-action-box {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.info-search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #0b5fa5;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+
+.info-search-btn:hover {
+  background: #f0f7fc;
+  border-color: #0b5fa5;
+}
+
+.info-switch-text {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.info-switch-text a {
+  color: #0b5fa5;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.info-switch-text a:hover {
+  text-decoration: underline;
+}
+
+/* RIGHT: LOGIN CARD */
+.login-card-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.login-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px 30px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+.card-heading {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 21px;
+  font-weight: 800;
+  color: #092b5f;
+  margin: 0 0 3px 0;
+}
+
+.card-subtitle {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* ALERTS */
+.login-alert {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  font-size: 12.5px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.login-alert-icon {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* FORM FIELDS */
+.form-field {
+  margin-bottom: 12px;
+}
+
+.field-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.field-label .req {
+  color: #dc2626;
+  margin-left: 2px;
+}
+
+.field-hint {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+.field-input, .field-select {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #d5dde7;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 13.5px;
+  color: #1e293b;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field-input:focus, .field-select:focus {
+  border-color: #0b5fa5;
+  box-shadow: 0 0 0 3px rgba(11, 95, 165, 0.12);
+}
+
+.field-input::placeholder {
+  color: #94a3b8;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container .field-input {
+  padding-right: 60px;
+}
+
+.btn-toggle-pass {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 40px;
+  background: none;
+  border: none;
+  padding: 0 12px;
+  color: #0b5fa5;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+
+.form-options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0 14px;
+  font-size: 12px;
+}
+
+.remember-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.remember-label input[type="checkbox"] {
+  accent-color: #0b5fa5;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+}
+
+.forgot-link {
+  color: #0b5fa5;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  transition: color 0.15s;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+  color: #084980;
+}
+
+/* SUBMIT BUTTON */
+.btn-login {
+  width: 100%;
+  height: 42px;
+  background-color: #0b5fa5;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-login:hover {
+  background-color: #084980;
+}
+
+.btn-login:active {
+  transform: translateY(1px);
+}
+
+.card-footer-links {
+  text-align: center;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.card-footer-links a {
+  color: #0b5fa5;
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.card-footer-links a:hover {
+  text-decoration: underline;
+}
+
+.card-eic-link {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.card-eic-link a {
+  color: #073d72;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.card-eic-link a:hover {
+  text-decoration: underline;
+}
+
+/* 4. FOOTER */
+.inst-footer {
+  background-color: #071e42;
+  color: #cbd5e1;
+  font-size: 11.5px;
+  padding: 10px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.inst-footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-copy {
+  color: #94a3b8;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-sep {
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 5. RESPONSIVE DESIGN */
+@media (min-height: 800px) {
+  .main-stage {
+    padding: 32px 24px;
+  }
+  .login-card {
+    padding: 30px 34px;
+  }
+}
+
+@media (max-height: 680px) and (min-width: 861px) {
+  .gov-top-bar {
+    display: none;
+  }
+  .inst-header-inner {
+    padding: 6px 24px;
+  }
+  .main-stage {
+    padding: 10px 24px;
+  }
+  .form-field {
+    margin-bottom: 8px;
+  }
+  .card-heading {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .stage-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .info-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 860px) {
+  body {
+    overflow-y: auto;
+  }
+  .main-stage {
+    padding: 32px 20px;
+  }
+  .stage-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .info-panel {
+    padding-right: 0;
+    text-align: center;
+  }
+  .info-list {
+    text-align: left;
+    display: inline-block;
+  }
+  .login-card-wrapper {
+    justify-content: center;
+  }
+  .inst-header-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 580px) {
+  .gov-top-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gov-top-left {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .inst-header-inner {
+    padding: 10px 16px;
+  }
+  .inst-logo {
+    width: 48px;
+    height: 52px;
+  }
+  .inst-script-title {
+    font-size: 18px;
+  }
+  .inst-stencil-title {
+    font-size: 15px;
+  }
+  .inst-tagline {
+    font-size: 9px;
+  }
+  .main-stage {
+    padding: 20px 16px;
+  }
+  .login-card {
+    padding: 24px 18px;
+  }
+  .inst-footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP UTILITY BAR (Institutional Dark Navy) -->
+<div class="gov-top-bar" role="region" aria-label="Official Publication Details">
+  <div class="gov-top-inner">
+    <div class="gov-top-left">
+      <span>▥ &nbsp;ISSN (Online): 2377-6196</span>
+      <i class="bar-sep"></i>
+      <span>♙ &nbsp;Open Access</span>
+      <i class="bar-sep"></i>
+      <span>▣ &nbsp;Quarterly Journal</span>
+    </div>
+    <div class="gov-top-right">
+      <span>AIRA Publisher &bull; Peer Reviewed</span>
+      <i class="bar-sep"></i>
+      <a href="../index.php" target="_blank" rel="noopener">🌐 &nbsp;Main Journal Website ↗</a>
+    </div>
+  </div>
 </div>
-<div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" value="<?=e($_POST['email']??'')?>" autocomplete="username" required></div>
-<div class="field"><label for="password">Password</label><div class="pass"><input id="password" name="password" type="password" autocomplete="current-password" required><button class="toggle" type="button" onclick="togglePassword()">SHOW</button></div></div>
-<div class="options"><label class="remember"><input type="checkbox" name="remember" value="1"><span>Remember me</span></label><a class="forgot" href="forgot_password.php">Forgot password?</a></div>
-<button class="btn" type="submit">SIGN IN</button></form>
-<div class="register">Don't have an account?<a href="register.php">Register as Author</a></div>
-<div class="contact">Editor-in-Chief? <a href="eic-login.php" style="font-weight:bold;color:#0b5fa5;">Sign in to EIC Portal</a> &bull; Need assistance? <a href="mailto:editorajsmr@gmail.com">Contact Office</a></div>
-<div class="copy">© <?=date('Y')?> The American Journal of Science and Medical Research. All rights reserved.</div>
-</div></main></div>
-<script>function togglePassword(){const x=document.getElementById('password'),b=document.querySelector('.toggle');if(x.type==='password'){x.type='text';b.textContent='HIDE'}else{x.type='password';b.textContent='SHOW'}}</script>
-</body></html>
+
+<!-- 2. INSTITUTIONAL HEADER -->
+<header class="inst-header" role="banner">
+  <div class="inst-header-inner">
+    <a class="inst-brand" href="../index.php" title="The American Journal of Science and Medical Research">
+      <img class="inst-logo" src="../images/ajsmr-logo.png" onerror="this.src='images/ajsmr-logo.png'" alt="AJSMR Official Seal">
+      <div class="inst-brand-text">
+        <div class="inst-script-title">The American Journal of</div>
+        <div class="inst-stencil-title">SCIENCE AND MEDICAL RESEARCH</div>
+        <p class="inst-tagline">Open Access &nbsp; | &nbsp; Peer Reviewed &nbsp; | &nbsp; AIRA Publisher</p>
+      </div>
+    </a>
+
+    <div class="inst-header-badge" aria-hidden="true">
+      <div class="inst-badge-icon">📖</div>
+      <div class="inst-badge-text">
+        <div class="inst-badge-title">Editorial Management</div>
+        <div class="inst-badge-desc">Author &amp; Reviewer Portal</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 3. MAIN WORKSPACE AREA -->
+<main class="main-stage">
+  <div class="stage-container">
+
+    <!-- LEFT SIDE: Welcome / Information Panel -->
+    <section class="info-panel" aria-labelledby="welcome-title">
+      <span class="eyebrow-pill">Editorial Management System</span>
+      <h1 class="info-title" id="welcome-title">Author &amp; Reviewer Portal</h1>
+      <p class="info-desc">
+        Welcome to the AJSMR online submission and peer review portal. Authors can submit new manuscripts, track review progress, and submit revisions. Invited peer reviewers can access evaluation assignments and submit feedback reports.
+      </p>
+
+      <p class="info-note">
+        Select your account type and enter your credentials to access your dashboard:
+      </p>
+
+      <ul class="info-list">
+        <li><strong>Authors:</strong> Track manuscript status, reviewer feedback, and production stages.</li>
+        <li><strong>Reviewers:</strong> Access assigned manuscripts and submit structured peer review reports.</li>
+        <li>Passwords are case-sensitive. Sessions expire automatically after inactivity.</li>
+      </ul>
+
+      <div class="info-action-box">
+        <a class="info-search-btn" href="../search.php" target="_blank" rel="noopener">
+          🔍 &nbsp;Search Public Journal Archive ↗
+        </a>
+
+        <div class="info-switch-text">
+          New to AJSMR? <a href="register.php">Register as an Author &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDE: Login Card -->
+    <div class="login-card-wrapper">
+      <section class="login-card" aria-labelledby="card-title">
+        <div class="card-heading">
+          <h2 class="card-title" id="card-title">Author / Reviewer Sign In</h2>
+          <p class="card-subtitle">Access the AJSMR Editorial Management System</p>
+        </div>
+
+        <?php if ($error !== ''): ?>
+          <div class="login-alert" role="alert">
+            <span class="login-alert-icon">&#9888;</span>
+            <div><?=htmlspecialchars($error, ENT_QUOTES, 'UTF-8')?></div>
+          </div>
+        <?php endif; ?>
+
+        <form method="post" action="login.php" autocomplete="on">
+          <input type="hidden" name="csrf" value="<?=htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8')?>">
+
+          <!-- Login Role Field (Backend Required for Author/Reviewer routing) -->
+          <div class="form-field">
+            <label class="field-label" for="login_role">
+              Login As <span class="req">*</span>
+            </label>
+            <select class="field-select" id="login_role" name="login_role" required>
+              <option value="author" <?=$selectedLoginRole === 'author' ? 'selected' : ''?>>Author</option>
+              <option value="reviewer" <?=$selectedLoginRole === 'reviewer' ? 'selected' : ''?>>Reviewer</option>
+            </select>
+            <div class="field-hint">Select <strong>Author</strong> or <strong>Reviewer</strong> according to your account type.</div>
+          </div>
+
+          <!-- Email / User ID Field -->
+          <div class="form-field">
+            <label class="field-label" for="email">
+              Email Address <span class="req">*</span>
+            </label>
+            <input class="field-input" id="email" name="email" type="email"
+                   value="<?=htmlspecialchars((string)($_POST['email'] ?? ''), ENT_QUOTES, 'UTF-8')?>"
+                   autocomplete="username" required
+                   placeholder="Enter your registered email address">
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-field">
+            <label class="field-label" for="password">
+              Password <span class="req">*</span>
+            </label>
+            <div class="password-container">
+              <input class="field-input" id="password" name="password" type="password"
+                     autocomplete="current-password" required
+                     placeholder="Enter Password">
+              <button class="btn-toggle-pass" type="button" onclick="togglePassword()" aria-label="Toggle password visibility">SHOW</button>
+            </div>
+          </div>
+
+          <!-- Form Options: Remember & Forgot Password -->
+          <div class="form-options-row">
+            <label class="remember-label">
+              <input type="checkbox" name="remember" value="1">
+              <span>Remember me</span>
+            </label>
+            <a class="forgot-link" href="forgot_password.php">Forgot password?</a>
+          </div>
+
+          <!-- Submit Button -->
+          <button class="btn-login" type="submit">SIGN IN</button>
+        </form>
+
+        <div class="card-footer-links">
+          Don't have an account? <a href="register.php">Register as Author</a>
+        </div>
+
+        <div class="card-eic-link">
+          Editor-in-Chief? <a href="eic-login.php">Sign in to EIC Portal &rarr;</a>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</main>
+
+<!-- 4. INSTITUTIONAL FOOTER -->
+<footer class="inst-footer" role="contentinfo">
+  <div class="inst-footer-inner">
+    <div class="footer-copy">
+      &copy; <?=date('Y')?> The American Journal of Science and Medical Research (AJSMR). All rights reserved.
+    </div>
+    <nav class="footer-nav" aria-label="Footer Navigation">
+      <a href="../openaccesscopyrightpolicy.php" target="_blank" rel="noopener">Privacy</a>
+      <i class="footer-sep"></i>
+      <a href="../publicationethics.php" target="_blank" rel="noopener">Terms of Use</a>
+      <i class="footer-sep"></i>
+      <a href="../contactus.php" target="_blank" rel="noopener">Contact</a>
+      <i class="footer-sep"></i>
+      <a href="../peerreviewpolicy.php" target="_blank" rel="noopener">Accessibility</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+function togglePassword() {
+  const pwd = document.getElementById('password');
+  const btn = document.querySelector('.btn-toggle-pass');
+  if (!pwd || !btn) return;
+  if (pwd.type === 'password') {
+    pwd.type = 'text';
+    btn.textContent = 'HIDE';
+  } else {
+    pwd.type = 'password';
+    btn.textContent = 'SHOW';
+  }
+}
+</script>
+</body>
+</html>

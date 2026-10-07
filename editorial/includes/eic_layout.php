@@ -12,20 +12,52 @@ if (!function_exists('db')) {
 
 function eic_render_top_bar(string $subtitle = 'Editor-in-Chief Administration Portal'): void {
     $u = function_exists('user') ? user() : ($_SESSION['user'] ?? null);
-    $userName = $u['name'] ?? $u['full_name'] ?? $u['email'] ?? 'Editor-in-Chief';
+    $userName = $u['email'] ?? $u['full_name'] ?? $u['name'] ?? 'Editor-in-Chief';
     $basePrefix = defined('BASE_URL') ? BASE_URL : '/editorial/';
     ?>
-    <header class="top">
-      <div class="top-inner">
-        <div class="brand">
-          AJSMR &mdash; Editorial Management System
-          <small><?=htmlspecialchars($subtitle, ENT_QUOTES, 'UTF-8')?></small>
+    <header class="eic-fixed-header-wrapper" role="banner">
+      <!-- 1. Top Utility Bar (Dark Navy, matching public AJSMR style) -->
+      <div class="eic-utility-bar">
+        <div class="eic-utility-inner">
+          <div class="eic-utility-left">
+            <span>▥ &nbsp;ISSN (Online): 2377-6196</span>
+            <i class="eic-bar-sep"></i>
+            <span>♙ &nbsp;Open Access</span>
+            <i class="eic-bar-sep"></i>
+            <span>▣ &nbsp;Quarterly</span>
+          </div>
+          <div class="eic-utility-right">
+            <span class="eic-portal-tag"><?=htmlspecialchars($subtitle, ENT_QUOTES, 'UTF-8')?></span>
+            <i class="eic-bar-sep"></i>
+            <a href="../index.php" target="_blank" rel="noopener">🌐 &nbsp;Main Journal Website ↗</a>
+          </div>
         </div>
-        <div class="top-actions">
-          <span class="user-badge">&#128100; <?=htmlspecialchars((string)$userName, ENT_QUOTES, 'UTF-8')?></span>
-          <a class="header-btn" href="<?=$basePrefix?>dashboard.php">EIC Dashboard</a>
-          <a class="header-btn" href="<?=$basePrefix?>workflow_v1.php">Workflow V1</a>
-          <a class="header-btn" href="<?=$basePrefix?>logout.php">Sign Out</a>
+      </div>
+
+      <!-- 2. Main Identity Header Area (White Background, matching public AJSMR branding) -->
+      <div class="eic-main-header">
+        <div class="eic-header-inner">
+          <a class="eic-journal-brand" href="<?=$basePrefix?>dashboard.php">
+            <img class="eic-brand-logo-image" src="../images/ajsmr-logo.png" onerror="this.src='images/ajsmr-logo.png'" alt="AJSMR logo">
+            <div class="eic-brand-copy">
+              <div class="eic-script-title">The American Journal of</div>
+              <div class="eic-stencil-title">SCIENCE AND MEDICAL RESEARCH</div>
+              <p class="eic-brand-tagline">Open Access &nbsp; | &nbsp; Peer Reviewed &nbsp; | &nbsp; AIRA Publisher</p>
+            </div>
+          </a>
+
+          <!-- EIC Administration Controls -->
+          <div class="eic-header-controls">
+            <div class="eic-user-pill">
+              <span class="eic-role-badge">Editor-in-Chief</span>
+              <span class="eic-user-name">&#128100; <?=htmlspecialchars((string)$userName, ENT_QUOTES, 'UTF-8')?></span>
+            </div>
+            <div class="eic-nav-actions">
+              <a class="eic-action-btn eic-btn-primary" href="<?=$basePrefix?>dashboard.php">EIC Dashboard</a>
+              <a class="eic-action-btn eic-btn-secondary" href="<?=$basePrefix?>workflow_v1.php">Workflow V1</a>
+              <a class="eic-action-btn eic-btn-danger" href="<?=$basePrefix?>logout.php">Sign Out</a>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -45,20 +77,12 @@ function eic_render_header(string $pageTitle = 'AJSMR | Editorial Management Sys
     <title><?=htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8')?></title>
     <style>
     *{box-sizing:border-box}
-    body{margin:0;background:#f4f7fb;color:#25344a;font-family:Arial,Helvetica,sans-serif}
-    .top{background:linear-gradient(135deg,#092b5f,#0b5fa5);color:#fff;padding:20px 30px}
-    .top-inner{max-width:1350px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-    .brand{font-size:22px;font-weight:800}
-    .brand small{display:block;font-size:12px;font-weight:400;margin-top:4px;color:#dbeafe}
-    .top-actions{display:flex;align-items:center;gap:12px}
-    .user-badge{font-size:13px;color:#dbeafe;background:rgba(255,255,255,0.12);padding:6px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.2)}
-    .header-btn{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,0.35);border-radius:7px;padding:8px 14px;font-size:13px;font-weight:600;transition:background 0.2s}
-    .header-btn:hover{background:rgba(255,255,255,0.15)}
-    .wrap{max-width:1350px;margin:24px auto;padding:0 20px}
+    body{margin:0;padding-top:132px;padding-bottom:38px;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    .wrap{max-width:100%;margin:0;padding:0;width:100%}
     /* Common UI components for EIC workflow pages */
     .title{font-size:24px;margin:0 0 16px 0;color:#092b5f;font-weight:800}
-    .panel,.card{background:#fff;border:1px solid #e3e9f1;border-radius:10px;padding:22px;margin-bottom:20px;box-shadow:0 4px 15px rgba(16,32,64,0.04)}
-    .btn{display:inline-block;background:#0b5fa5;color:#fff;border:0;border-radius:6px;padding:9px 15px;text-decoration:none;font-weight:bold;font-size:13px;cursor:pointer;transition:background 0.15s;line-height:1.2}
+    .panel,.card{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:22px;margin-bottom:20px;box-shadow:0 1px 3px rgba(15,23,42,0.04)}
+    .btn{display:inline-block;background:#0b5fa5;color:#fff;border:0;border-radius:6px;padding:9px 15px;text-decoration:none;font-weight:bold;font-size:12.5px;cursor:pointer;transition:background 0.15s;line-height:1.2}
     .btn:hover{background:#084b84}
     .btn.light{background:#eaf2f9;color:#0b5fa5}
     .btn.primary{background:#0b5fa5;color:#fff}
@@ -91,8 +115,8 @@ function eic_render_footer(): void {
         </div><!-- /.right-panel -->
       </div><!-- /.dashboard-layout -->
     </main>
-    <footer style="margin-top:40px;padding:24px 0;border-top:1px solid #e2e8f0;text-align:center;font-size:12px;color:#64748b;">
-      AJSMR Editorial Management System V1 &copy; <?=date('Y')?> &bull; Editor-in-Chief Workflow
+    <footer class="eic-fixed-footer">
+      AJSMR Editorial Management System V1 &copy; <?=date('Y')?> &bull; Editor-in-Chief Administration Portal
     </footer>
     </body>
     </html>
